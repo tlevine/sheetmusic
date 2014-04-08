@@ -2,3 +2,5 @@ Helpful links
 
 * http://www.ha19.no/gnumeric/
 * http://www.hep.by/gnu/gnumeric/sect-extending-python-writing.shtml
+
+This requires Python 2 because mingus requires Python 2.

@@ -40,7 +40,9 @@ def integer(note):
     return int(parse_scientific(note))
 
 def main():
-    functions = {}
+    functions = {
+        'integer': integer,
+    }
     return functions
 
 sheetmusic_functions = main()

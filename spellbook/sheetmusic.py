@@ -4,20 +4,16 @@ import mingus.containers as containers
 import mingus.core.chords as chords
 import mingus.core.intervals as intervals
 
-class Note(containers.Note):
-    def __str__(self):
-        return to_scientific(int(self))
-
 def from_scientific(scientific_note):
-    m = re.match(r'^([^0-9]+)([0-9]+)$', scientific_note)
+    m = re.match(r'^([^0-9]+)([0-9]+)$', str(scientific_note))
     if not m:
         raise ValueError('%s is not in scientific notation' % scientific_note)
     note_within_octave = m.group(1)
     octave = int(m.group(2))
-    return Note(note_within_octave, octave)
+    return containers.Note(note_within_octave, octave)
 
 def to_scientific(integral_note):
-    note = containers.Note(integral_note)
+    note = containers.Note(int(integral_note))
     return note.name + str(note.octave)
 
 def pretty(func):
@@ -44,10 +40,10 @@ def to_integer(scientific_note):
     '''
     :param note: Scientific representation of the note, like A4
     '''
-    return int(from_scientific(scientific_note))
+    return int(from_scientific(str(scientific_note)))
 
 def from_integer(integral_note):
-    return to_scientific(containers.Note(integral_note))
+    return to_scientific(containers.Note(int(integral_note)))
 
 def main():
     functions = {

@@ -4,18 +4,21 @@ import mingus.containers as containers
 import mingus.core.chords as chords
 import mingus.core.intervals as intervals
 
+def parse_scientific(scientific_notation):
+    m = re.match(r'^([^0-9]+)([0-9]+)$', scientific_notation)
+    if not m:
+        raise ValueError('%s is not in scientific notation' % scientific_notation)
+    note_within_octave = m.group(1)
+    octave = int(m.group(2))
+    return containers.Note(note_within_octave, octave)
+
 def pretty(func):
     '''
     Given a function of type (int -> int),
     make it into a function of type (scientific -> scientific).
     '''
     def wrapper(scientific_notation, *args, **kwargs):
-        m = re.match(r'^([^0-9]+)([0-9]+)$', scientific_notation)
-        if not m:
-            raise ValueError('%s is not in scientific notation' % scientific_notation)
-        note_within_octave = m.group(1)
-        octave = int(m.group(2))
-        input_int = int(containers.Note(note_within_octave, octave))
+        input_int = int(parse_scientific(scientific_notation))
         output_int = func(input_int, *args, **kwargs)
         note = containers.Note(output_int)
         return note.name + str(note.octave)
@@ -30,12 +33,14 @@ def interval(note, halfsteps):
     '''
     return note + halfsteps
 
-class Foo:
-    def __add__(self, n):
-        return 8
+def integer(note):
+    '''
+    :param note: Scientific representation of the note, like A4
+    '''
+    return int(parse_scientific(note))
 
 def main():
-    functions = {'foo': Foo}
+    functions = {}
     return functions
 
 sheetmusic_functions = main()

@@ -11,20 +11,7 @@
 		<service type="function_group" id="sheetmusic">
 			<category>Local Python</category>
 			<functions>
-				<function name="major_second"/>
-				<function name="major_third"/>
-				<function name="major_fourth"/>
-				<function name="major_fifth"/>
-				<function name="major_sixth"/>
-				<function name="major_seventh"/>
-				<function name="major_unison"/>
-				<function name="minor_second"/>
-				<function name="minor_third"/>
-				<function name="minor_fourth"/>
-				<function name="minor_fifth"/>
-				<function name="minor_sixth"/>
-				<function name="minor_seventh"/>
-				<function name="minor_unison"/>
+				<function name="foo"/>
 			</functions>
 		</service>
 	</services>

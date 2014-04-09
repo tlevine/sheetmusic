@@ -4,13 +4,17 @@ import mingus.containers as containers
 import mingus.core.chords as chords
 import mingus.core.intervals as intervals
 
+class Note(containers.Note):
+    def __str__(self):
+        return to_scientific(int(self))
+
 def from_scientific(scientific_note):
     m = re.match(r'^([^0-9]+)([0-9]+)$', scientific_note)
     if not m:
         raise ValueError('%s is not in scientific notation' % scientific_note)
     note_within_octave = m.group(1)
     octave = int(m.group(2))
-    return containers.Note(note_within_octave, octave)
+    return Note(note_within_octave, octave)
 
 def to_scientific(integral_note):
     note = containers.Note(integral_note)

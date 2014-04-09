@@ -11,7 +11,10 @@
 		<service type="function_group" id="sheetmusic">
 			<category>Local Python</category>
 			<functions>
-				<function name="integer"/>
+				<function name="to_integer"/>
+				<function name="from_integer"/>
+				<function name="interval"/>
+				<function name="chord"/>
 			</functions>
 		</service>
 	</services>

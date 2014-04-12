@@ -1,3 +1,25 @@
+## Weird features
+Darker text produces louder notes.
+
+## Slurred and tied notes
+Sheetmusic produces pure sounds; within a spreadsheet cell,
+there is no variation in pitch or dynamic. Thus, the concept
+of slurred and tied notes is unnecessary. That is, two tied
+or slurred notes sound the same as two not-slurred notes.
+
+(add examples with normal sheet music)
+
+You can create an effect like slurred and tied notes by
+breaking your song into more rows and introducing variation.
+For example, break your song into thirty-second notes instead
+of quarter notes, and make the first thirty-second note a bit
+louder; this will be like you're pressing down on a piano key
+anew rather than holding it down.
+
+## 
+Notes are not slurred by default.
+
+## Development
 Helpful links
 
 * http://www.ha19.no/gnumeric/

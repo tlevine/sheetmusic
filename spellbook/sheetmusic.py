@@ -69,7 +69,7 @@ def chord(func_name, scientific_note, *args, **kwargs):
         larger = result
         correct_octaves(smaller, result)
 
-    return list(map(to_scientific, results))
+    return [[to_scientific(result)] for result in results]
 
 def main():
     functions = {

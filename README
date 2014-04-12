@@ -16,8 +16,10 @@ of quarter notes, and make the first thirty-second note a bit
 louder; this will be like you're pressing down on a piano key
 anew rather than holding it down.
 
-## 
-Notes are not slurred by default.
+## Glissando
+Create a glissando effect by drawing a border around the cells
+of interest. Pitches are interpolated between any cells that
+contain notes, and empty cells in the region are ignored.
 
 ## Development
 Helpful links

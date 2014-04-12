@@ -45,14 +45,41 @@ def to_integer(scientific_note):
 def from_integer(integral_note):
     return to_scientific(containers.Note(int(integral_note)))
 
+def chord(func_name, scientific_note, *args, **kwargs):
+    note = from_scientific(scientific_note)
+    results = map(containers.Note, getattr(chords, func_name)(note.name, *args, **kwargs))
+
+    if results[0].name >= note.name:
+        octave = note.octave
+    else:
+        octave = note.octave + 1
+
+    for result in results:
+        result.octave = octave
+
+    def correct_octaves(smaller, larger):
+        if larger <= smaller:
+            larger.octave = larger.octave + 1
+
+    smaller = None
+    for result in results:
+        if smaller == None:
+            smaller = result
+            continue
+        larger = result
+        correct_octaves(smaller, result)
+
+    return list(map(to_scientific, results))
+
 def main():
     functions = {
         'to_integer': to_integer,
         'from_integer': from_integer,
         'interval': interval,
-        'chord': lambda: [[3,4]], # http://code.google.com/p/mingus/wiki/tutorialChords
-        'scale': lambda: [[3],[4]], # http://code.google.com/p/mingus/wiki/tutorialScales
+        'chord': chord,
     }
+#       'chord': lambda: [[3],[4]], # http://code.google.com/p/mingus/wiki/tutorialChords
+#       'scale': lambda: [[3,4]], # http://code.google.com/p/mingus/wiki/tutorialScales
     return functions
 
 sheetmusic_functions = main()

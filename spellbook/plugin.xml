@@ -15,6 +15,7 @@
 				<function name="from_integer"/>
 				<function name="interval"/>
 				<function name="chord"/>
+				<function name="scale"/>
 			</functions>
 		</service>
 	</services>

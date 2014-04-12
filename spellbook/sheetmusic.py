@@ -50,6 +50,7 @@ def main():
         'to_integer': to_integer,
         'from_integer': from_integer,
         'interval': interval,
+        'chord': lambda: [[3,4]]
     }
     return functions
 

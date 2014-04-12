@@ -1,6 +1,10 @@
 ## Weird features
 Darker text produces louder notes.
 
+## Bars
+If you set a time signature, horizontal borders will be drawn
+at the breaks between bars.
+
 ## Slurred and tied notes
 Sheetmusic produces pure sounds; within a spreadsheet cell,
 there is no variation in pitch or dynamic. Thus, the concept
@@ -17,9 +21,9 @@ louder; this will be like you're pressing down on a piano key
 anew rather than holding it down.
 
 ## Glissando
-Create a glissando effect by drawing a border around the cells
-of interest. Pitches are interpolated between any cells that
-contain notes, and empty cells in the region are ignored.
+Create a glissando effect by setting the cells of interest to the
+same background color. Pitches are interpolated between any cells
+that contain notes, and empty cells in the region are ignored.
 
 ## Development
 Helpful links

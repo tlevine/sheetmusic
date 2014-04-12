@@ -50,7 +50,7 @@ def main():
         'to_integer': to_integer,
         'from_integer': from_integer,
         'interval': interval,
-        'chord': lambda: [[3,4]],
+        'chord': lambda: [[3,4]], # http://code.google.com/p/mingus/wiki/tutorialChords
         'scale': lambda: [[3],[4]], # http://code.google.com/p/mingus/wiki/tutorialScales
     }
     return functions

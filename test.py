@@ -7,7 +7,7 @@ import lxml.etree
 
 import sheetmusic
 
-def test_correspondance():
+def test_xml():
     fn = os.path.join('spellbook','plugin.xml')
     xml = lxml.etree.parse(fn).getroot()
     from_xml = set(xml.xpath('//function/@name'))

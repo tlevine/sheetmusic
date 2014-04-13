@@ -52,11 +52,17 @@ def scale(func_name, scientific_note):
     results = _ascending(note, map(containers.Note, getattr(scales, func_name)(note.name)))
     return [[to_scientific(result) for result in results]]
 
-def chord(func_name, scientific_note, *args, **kwargs):
+def _chord(func_name, scientific_note, *args, **kwargs):
     'http://code.google.com/p/mingus/wiki/tutorialChords'
     note = from_scientific(scientific_note)
     results = _ascending(note, map(containers.Note, getattr(chords, func_name)(note.name, *args, **kwargs)))
-    return [[to_scientific(result)] for result in results]
+    return [to_scientific(result) for result in results]
+
+def chord(*args, **kwargs):
+    return [[x] for x in _chord(*args, *kwargs)]
+
+def arpeggio(*args, **kwargs):
+    return [_chord(*args,**kwargs)]
 
 def _ascending(note, results):
     results = list(results)

@@ -32,3 +32,6 @@ Helpful links
 * http://www.hep.by/gnu/gnumeric/sect-extending-python-writing.shtml
 
 This requires Python 2 because mingus requires Python 2.
+
+* http://code.google.com/p/mingus/wiki/tutorialExtraLilypond
+* http://code.google.com/p/mingus/wiki/tutorialMidiFileOut

@@ -2,6 +2,7 @@ import re
 
 import mingus.containers as containers
 import mingus.core.chords as chords
+import mingus.core.scales as scales
 import mingus.core.intervals as intervals
 
 def from_scientific(scientific_note):
@@ -45,10 +46,20 @@ def to_integer(scientific_note):
 def from_integer(integral_note):
     return to_scientific(containers.Note(int(integral_note)))
 
-def chord(func_name, scientific_note, *args, **kwargs):
+def scale(func_name, scientific_note):
+    'http://code.google.com/p/mingus/wiki/tutorialScales'
     note = from_scientific(scientific_note)
-    results = map(containers.Note, getattr(chords, func_name)(note.name, *args, **kwargs))
+    results = _ascending(note, map(containers.Note, getattr(scales, func_name)(note.name)))
+    return [[to_scientific(result) for result in results]]
 
+def chord(func_name, scientific_note, *args, **kwargs):
+    'http://code.google.com/p/mingus/wiki/tutorialChords'
+    note = from_scientific(scientific_note)
+    results = _ascending(note, map(containers.Note, getattr(chords, func_name)(note.name, *args, **kwargs)))
+    return [[to_scientific(result)] for result in results]
+
+def _ascending(note, results):
+    results = list(results)
     if results[0].name >= note.name:
         octave = note.octave
     else:
@@ -68,8 +79,7 @@ def chord(func_name, scientific_note, *args, **kwargs):
             continue
         larger = result
         correct_octaves(smaller, result)
-
-    return [[to_scientific(result)] for result in results]
+    return results
 
 def main():
     functions = {
@@ -77,9 +87,8 @@ def main():
         'from_integer': from_integer,
         'interval': interval,
         'chord': chord,
+        'scale': scale,
     }
-#       'chord': lambda: [[3],[4]], # http://code.google.com/p/mingus/wiki/tutorialChords
-#       'scale': lambda: [[3,4]], # http://code.google.com/p/mingus/wiki/tutorialScales
     return functions
 
 sheetmusic_functions = main()

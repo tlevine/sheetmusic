@@ -6,6 +6,8 @@ import mingus.core.scales as scales
 import mingus.core.intervals as intervals
 import mingus.core.progressions as progressions
 
+import mingus.extra.LilyPond as LilyPond
+
 def from_scientific(scientific_note):
     m = re.match(r'^([^0-9]+)([0-9]+)$', str(scientific_note))
     if not m:
@@ -97,6 +99,13 @@ def progression(the_progression, root):
     chords = progressions.to_chord(the_progression, root.name)
     return [_ascending(root, chord) for chord in chords]
 
+def sheetmusic(cells, key = 'C', meter = (4, 4)):
+    for column in cells:
+        bar = containers.Bar(key, meter)
+        for cell in column:
+            bar += from_scientific(cell)
+        LilyPond.to_png(bar, '/tmp/bar.png')
+
 def main():
     functions = {
         'to_integer': to_integer,
@@ -105,6 +114,7 @@ def main():
         'chord': chord,
         'scale': scale,
         'progression': progression,
+        'sheetmusic': sheetmusic,
     }
     return functions
 

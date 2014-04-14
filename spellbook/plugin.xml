@@ -17,6 +17,7 @@
 				<function name="chord"/>
 				<function name="scale"/>
 				<function name="progression"/>
+				<function name="sheetmusic"/>
 			</functions>
 		</service>
 	</services>

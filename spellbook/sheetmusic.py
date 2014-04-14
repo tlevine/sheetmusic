@@ -99,7 +99,8 @@ def progression(the_progression, root):
     chords = progressions.to_chord(the_progression, root.name)
     return [_ascending(root, chord) for chord in chords]
 
-def sheetmusic(cells, key = 'C', meter = (4, 4)):
+def sheetmusic(range_ref, key = 'C', meter = (4, 4)):
+    # Gnumeric.functions['column'](range_ref)
     for column in cells:
         bar = containers.Bar(key, meter)
         for cell in column:

@@ -4,6 +4,7 @@ import mingus.containers as containers
 import mingus.core.chords as chords
 import mingus.core.scales as scales
 import mingus.core.intervals as intervals
+import mingus.core.progressions as progressions
 
 def from_scientific(scientific_note):
     m = re.match(r'^([^0-9]+)([0-9]+)$', str(scientific_note))
@@ -87,6 +88,12 @@ def _ascending(note, results):
         correct_octaves(smaller, result)
     return results
 
+def progression(the_progression, root):
+    '''
+    >>> progression(['I','IV','V'], 'C3')
+    [['C3', 'E3', 'G3'], ['F3', 'A4', 'C4'], ['G3', 'B4', 'D4']]
+    '''
+
 def main():
     functions = {
         'to_integer': to_integer,
@@ -94,6 +101,7 @@ def main():
         'interval': interval,
         'chord': chord,
         'scale': scale,
+        'progression': progression,
     }
     return functions
 

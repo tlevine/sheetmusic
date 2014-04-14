@@ -93,6 +93,9 @@ def progression(the_progression, root):
     >>> progression(['I','IV','V'], 'C3')
     [['C3', 'E3', 'G3'], ['F3', 'A4', 'C4'], ['G3', 'B4', 'D4']]
     '''
+    root_note = from_scientific(root)
+    chords = progressions.to_chord(the_progression, root.name)
+    return [_ascending(root, chord) for chord in chords]
 
 def main():
     functions = {

@@ -16,6 +16,7 @@
 				<function name="interval"/>
 				<function name="chord"/>
 				<function name="scale"/>
+				<function name="progression"/>
 			</functions>
 		</service>
 	</services>

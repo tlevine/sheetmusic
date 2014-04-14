@@ -113,17 +113,15 @@ try:
 except ImportError:
     pass
 else:
-    def iter_range_ref(range_ref):
+    def range_values(range_ref):
         workbook_index = 0 # Let's just hope that's always the case
         workbook = Gnumeric.workbooks()[workbook_index]
-        sheet_index = int(Gnumeric.functions['sheet'](range_ref))
+        sheet_index = int(Gnumeric.functions['sheet'](range_ref)) - 1
         sheet = workbook.sheets()[sheet_index]
         begin, end = range_ref.get_tuple()
-        columns = Gnumeric.functions['columns'](range_ref)
-        return columns[-1][-1]
-        row_index = int(Gnumeric.functions['rows'](range_ref))
-        cell = sheet.cell_fetch(column_index, row_index)
-        return str(cell)
+        rows = map(int, Gnumeric.functions['row'](range_ref)[0])
+        columns = [int(x[0]) for x in Gnumeric.functions['column'](range_ref)]
+        return [[sheet.cell_fetch(int(column-1), int(row-1)).get_entered_text() for row in rows] for column in columns]
 
 def main():
     functions = {

@@ -118,10 +118,12 @@ else:
         workbook = Gnumeric.workbooks()[workbook_index]
         sheet_index = int(Gnumeric.functions['sheet'](range_ref))
         sheet = workbook.sheets()[sheet_index]
-        column_index = int(Gnumeric.functions('columns')(range_ref))
-        row_index = int(Gnumeric.functions('rows')(range_ref))
-
-        return str(sheet.cell_fetch(column_index, row_index))
+        begin, end = range_ref.get_tuple()
+        columns = Gnumeric.functions['columns'](range_ref)
+        return columns[-1][-1]
+        row_index = int(Gnumeric.functions['rows'](range_ref))
+        cell = sheet.cell_fetch(column_index, row_index)
+        return str(cell)
 
 def main():
     functions = {

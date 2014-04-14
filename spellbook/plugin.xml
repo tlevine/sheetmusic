@@ -18,7 +18,6 @@
 				<function name="scale"/>
 				<function name="progression"/>
 				<function name="sheetmusic"/>
-				<function name="iter_range_ref"/>
 			</functions>
 		</service>
 	</services>

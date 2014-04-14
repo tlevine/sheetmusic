@@ -132,7 +132,6 @@ def main():
         'scale': scale,
         'progression': progression,
         'sheetmusic': sheetmusic,
-        'iter_range_ref': iter_range_ref,
     }
     return functions
 

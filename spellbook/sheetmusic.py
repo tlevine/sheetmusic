@@ -102,12 +102,26 @@ def progression(the_progression, root):
     return [_ascending(root, chord) for chord in chords]
 
 def sheetmusic(range_ref, key = 'C', meter = (4, 4)):
-    # Gnumeric.functions['column'](range_ref)
     for column in cells:
         bar = containers.Bar(key, meter)
         for cell in column:
             bar += from_scientific(cell)
         LilyPond.to_png(bar, '/tmp/bar.png')
+
+try:
+    import Gnumeric
+except ImportError:
+    pass
+else:
+    def iter_range_ref(range_ref):
+        workbook_index = 0 # Let's just hope that's always the case
+        workbook = Gnumeric.workbooks()[workbook_index]
+        sheet_index = int(Gnumeric.functions['sheet'](range_ref))
+        sheet = workbook.sheets()[sheet_index]
+        column_index = int(Gnumeric.functions('columns')(range_ref))
+        row_index = int(Gnumeric.functions('rows')(range_ref))
+
+        return str(sheet.cell_fetch(column_index, row_index))
 
 def main():
     functions = {
@@ -118,6 +132,7 @@ def main():
         'scale': scale,
         'progression': progression,
         'sheetmusic': sheetmusic,
+        'iter_range_ref': iter_range_ref,
     }
     return functions
 

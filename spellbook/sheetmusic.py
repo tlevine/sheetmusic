@@ -59,7 +59,7 @@ def _chord(func_name, scientific_note, *args, **kwargs):
     return [to_scientific(result) for result in results]
 
 def chord(*args, **kwargs):
-    return [[x] for x in _chord(*args, *kwargs)]
+    return [[x] for x in _chord(*args, **kwargs)]
 
 def arpeggio(*args, **kwargs):
     return [_chord(*args,**kwargs)]

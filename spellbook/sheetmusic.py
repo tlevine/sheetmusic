@@ -7,6 +7,8 @@ import mingus.core.intervals as intervals
 import mingus.core.progressions as progressions
 
 import mingus.extra.LilyPond as LilyPond
+from mingus.midi import fluidsynth
+fluidsynth.init
 
 def from_scientific(scientific_note):
     m = re.match(r'^([^0-9]+)([0-9]+)$', str(scientific_note))

@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+version=$(gnumeric --version|head -n1|sed "s/^.*'\([0-9.]*\)'$/\1/")
+plugins="$HOME/.gnumeric/$version/plugins"
+mkdir -p "$plugins"
+test -e "$plugins/sheetmusic" || ln -s "$PWD/spellbook" "$plugins/sheetmusic"

@@ -1,6 +1,6 @@
 import functools
 
-import libsheetmusic.music as m
+import libsheetmusic.spreadsheet as s
 import libsheetmusic.util as u
 
 def interval_functions():
@@ -15,14 +15,8 @@ def interval_functions():
         'minor_fifth', 'minor_fourth', 'minor_second', 'minor_seventh', 'minor_sixth', 'minor_third', 'minor_unison',
         'perfect_fifth', 'perfect_fourth', 'unison'
     ]
-
-    def keyed_interval(func_name, string_note, key):
-        return to_scientific(m.keyed_interval(func_name, from_scientific(string_note), key))
-    def nonkeyed_interval(func_name, string_note):
-        return to_scientific(m.nonkeyed_interval(func_name, from_scientific(string_note)))
-
-    keyed_functions = {name + '_interval': functools.partial(keyed_interval, name) for name in keyed}
-    nonkeyed_functions = {name + '_interval': functools.partial(nonkeyed_interval, name) for name in not_keyed}
+    keyed_functions = {name + '_interval': functools.partial(s.keyed_interval, name) for name in keyed}
+    nonkeyed_functions = {name + '_interval': functools.partial(s.nonkeyed_interval, name) for name in not_keyed}
     return u.merge(keyed_functions, notkeyed_functions)
 
 def scale_functions():
@@ -42,7 +36,7 @@ def scale_functions():
         'phrygian',
         'whole_note'
     ]
-    return {name + '_scale': functools.partial(m.scale, name) for name in scale_names}
+    return {name + '_scale': functools.partial(s.scale, name) for name in scale_names}
 
 def chord_functions():
     chord_names = [
@@ -64,16 +58,18 @@ def chord_functions():
         'suspended_seventh', 'suspended_triad', 'third_inversion',
         'tonic', 'tonic7', 'triad', 'vi', 'vi7', 'vii', 'vii7',
     ]
-    chord = {name + '_chord': functools.partial(m.chord, name) for name in chord_names}
-    arpeggio = {name + '_arpeggio': functools.partial(m.arpeggio, name) for name in chord_names}
+    chord = {name + '_chord': functools.partial(s.chord, name) for name in chord_names}
+    arpeggio = {name + '_arpeggio': functools.partial(s.arpeggio, name) for name in chord_names}
     return u.merge(chord, arpeggio)
 
 def progression_functions():
-    def progression(range_ref, scientific_root_note):
-        the_progression = from_range_ref(range_ref)
-        root_note = from_scientific(scientific_root_note)
-        result = m.progression(the_progression, root_note)
-        return range_apply(to_scientific, result)
+    try:
+        import Gnumeric
+    except ImportError:
+        def progression(a,b):
+            raise EnvironmentError('This must be run from inside Gnumeric.')
+    else:
+        progression = functools.partial(s.from_range_ref, Gnumeric)
     return {'progression': progression}
 
 def functions():

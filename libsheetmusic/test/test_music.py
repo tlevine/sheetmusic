@@ -31,9 +31,9 @@ def test_keyed_interval():
     n.assert_equal(music.keyed_interval('second', c.Note('D-2'), 'Ab'), c.Note('E-2'))
 
 def test_nonkeyed_interval():
-    n.assert_equal(music.keyed_interval('major_sixth', c.Note('G-4')), c.Note('E-5'))
-    n.assert_equal(music.keyed_interval('minor_sixth', c.Note('G-4')), c.Note('Eb-5'))
-    n.assert_equal(music.keyed_interval('major_second', c.Note('D-2')), c.Note('E-2'))
+    n.assert_equal(music.nonkeyed_interval('major_sixth', c.Note('G-4')), c.Note('E-5'))
+    n.assert_equal(music.nonkeyed_interval('minor_sixth', c.Note('G-4')), c.Note('Eb-5'))
+    n.assert_equal(music.nonkeyed_interval('major_second', c.Note('D-2')), c.Note('E-2'))
 
 def test_next_note():
     n.assert_equal(music._next_note(c.Note('D-4'), 'E'), c.Note('E-4'))

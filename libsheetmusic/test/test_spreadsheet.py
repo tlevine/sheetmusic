@@ -1,7 +1,7 @@
 import nose.tools as n
 import mingus.containers as c
 
-import sheetmusic.spreadsheet as ss
+import libsheetmusic.spreadsheet as ss
 
 def test_from_integer():
     n.assert_equal(ss.from_integer(23), c.Note(23))
@@ -22,6 +22,6 @@ def test_range_apply():
     n.assert_list_equal(observed, expected)
 
 def test_from_range_ref():
-    import sheetmusic.test.MockGnumeric as MockGnumeric
+    import libsheetmusic.test.MockGnumeric as MockGnumeric
     observed = ss.from_range_ref(MockGnumeric, MockGnumeric.RangeRef())
     expected = [[MockGnumeric.Cell._cell_text]*4]*6

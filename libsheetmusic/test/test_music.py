@@ -1,7 +1,7 @@
 import nose.tools as n
 import mingus.containers as c
 
-import sheetmusic.music as music
+import libsheetmusic.music as music
 
 def test_scale():
     observed = music.scale('lydian', c.Note('G',3))

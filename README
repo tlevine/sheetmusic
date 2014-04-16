@@ -2,8 +2,16 @@
 Darker text produces louder notes.
 
 ## Bars
-If you set a time signature, horizontal borders will be drawn
-at the breaks between bars.
+If you set the time signature (meter), there will be as many
+notes in a bar as the first number, and each note will be the
+length specified by the (inverse of the) second number.
+
+If you set no time signature, horizontal borders will be used
+as the breaks between bars.
+
+You can also set just the second number of the meter
+to indicate the length of a cell; if you don't set it,
+the default of 4 (quarter note) will be used.
 
 ## Slurred and tied notes
 Sheetmusic produces pure sounds; within a spreadsheet cell,
@@ -35,3 +43,11 @@ This requires Python 2 because mingus requires Python 2.
 
 * http://code.google.com/p/mingus/wiki/tutorialExtraLilypond
 * http://code.google.com/p/mingus/wiki/tutorialMidiFileOut
+
+## To do
+
+* Separate stuff into a separate package that doesn't depend on Gnumeric;
+    this way, it'll be easier to test.
+* Mock the Gnumeric module for testing and whatnot
+* Anonymous functions `call(string_function, *args)`
+* `=play`, `=loop`, `=sheetmusic`

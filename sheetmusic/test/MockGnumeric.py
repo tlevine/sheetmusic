@@ -1,6 +1,6 @@
 class Cell:
-    _cell_text = 'The entered text'
-    def get_entered_text(self, ):
+    _cell_text = 'The rendered text'
+    def get_rendered_text(self, ):
         return self._cell_text
 
 class Sheet:

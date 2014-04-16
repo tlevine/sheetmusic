@@ -39,9 +39,6 @@ def from_range_ref(Gnumeric, range_ref):
     workbook = Gnumeric.workbooks()[workbook_index]
     sheet_index = int(Gnumeric.functions['sheet'](range_ref)) - 1
     sheet = workbook.sheets()[sheet_index]
-   #begin, end = range_ref.get_tuple()
-    print(Gnumeric.functions['row'](range_ref))
-    print(Gnumeric.functions['column'](range_ref))
     rows = map(int, Gnumeric.functions['row'](range_ref)[0])
     columns = [int(x[0]) for x in Gnumeric.functions['column'](range_ref)]
-    return [[sheet.cell_fetch(int(column-1), int(row-1)).get_entered_text() for row in rows] for column in columns]
+    return [[sheet.cell_fetch(int(column-1), int(row-1)).get_rendered_text() for row in rows] for column in columns]

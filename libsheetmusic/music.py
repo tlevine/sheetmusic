@@ -23,7 +23,14 @@ def progression(the_progression, root_note):
     '''
     if len(the_progression) == 1:
         the_progression = the_progression[0]
-    return progressions.to_chords(the_progression, root_note.name)
+    named_chords = progressions.to_chords(the_progression, root_note.name)
+
+    def convert(next_chord, prev = {'note':root_note}):
+        result = _ascending(prev['note'], next_chord)
+        prev['note'] = result[0]
+        return result
+
+    return [convert(chord) for chord in named_chords]
 
 def nonkeyed_interval(func_name, note):
     other_note_name = getattr(intervals, func_name)(note.name)

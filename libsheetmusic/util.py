@@ -6,3 +6,7 @@ def merge(a, b):
     result = dict(a)
     result.update(b)
     return result
+
+def range_apply(func, list_list):
+    return [[func(cell) for cell in column] for column in list_list]
+

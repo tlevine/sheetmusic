@@ -31,9 +31,6 @@ def to_scientific(integral_note):
     note = containers.Note(int(integral_note))
     return note.name + str(note.octave)
 
-def range_apply(func, list_list):
-    return [[func(cell) for cell in column] for column in list_list]
-
 def from_range_ref(Gnumeric, range_ref):
     workbook_index = 0 # Let's just hope that's always the case
     workbook = Gnumeric.workbooks()[workbook_index]

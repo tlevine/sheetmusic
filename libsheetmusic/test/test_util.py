@@ -1,4 +1,6 @@
-import libspreadsheet.util as util
+import nose.tools as n
+
+import libsheetmusic.util as util
 
 def test_range_apply():
     original = [[1,2],[3,4],[5,6]]

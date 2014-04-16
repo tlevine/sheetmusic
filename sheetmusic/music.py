@@ -26,8 +26,7 @@ def progression(the_progression, root_note):
 
 def _chord(func_name, note, *args, **kwargs):
     'http://code.google.com/p/mingus/wiki/tutorialChords'
-    results = _ascending(note, map(containers.Note, getattr(chords, func_name)(note.name, *args, **kwargs)))
-    return [to_scientific(result) for result in results]
+    return _ascending(note, map(containers.Note, getattr(chords, func_name)(note.name, *args, **kwargs)))
 
 def _ascending(note, results):
     results = list(results)

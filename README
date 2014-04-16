@@ -44,6 +44,11 @@ This requires Python 2 because mingus requires Python 2.
 * http://code.google.com/p/mingus/wiki/tutorialExtraLilypond
 * http://code.google.com/p/mingus/wiki/tutorialMidiFileOut
 
+## Installing
+Install lilypond, fluidsynth, gnumeric, maybe something else. Then
+
+    make install
+
 ## To do
 
 * Separate stuff into a separate package that doesn't depend on Gnumeric;

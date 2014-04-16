@@ -5,3 +5,7 @@ test:
 
 install:
 	./link
+
+run:
+	export PYTHONPATH=$$PWD
+	gnumeric

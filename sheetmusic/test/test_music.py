@@ -5,6 +5,6 @@ import sheetmusic.music as music
 
 def test_scale():
     observed = music.scale('lydian', c.Note('G',3))
-    expected = [['G3', 'A4', 'B4', 'C#4', 'D4', 'E4', 'F#4']]
+    expected = [map(c.Note, ['G-3', 'A-4', 'B-4', 'C#-4', 'D-4', 'E-4', 'F#-4'])]
     n.assert_list_equal(observed[0], expected[0])
     n.assert_list_equal(observed, expected)

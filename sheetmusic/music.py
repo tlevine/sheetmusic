@@ -8,7 +8,7 @@ import mingus.core.progressions as progressions
 
 def scale(func_name, note):
     'http://code.google.com/p/mingus/wiki/tutorialScales'
-    return _ascending(note, map(containers.Note, getattr(scales, func_name)(note.name)))
+    return [_ascending(note, map(containers.Note, getattr(scales, func_name)(note.name)))]
 
 def chord(*args, **kwargs):
     return [[x] for x in _chord(*args, **kwargs)]

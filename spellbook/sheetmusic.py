@@ -1,2 +1,2 @@
-import libspreadsheet.main
-sheetmusic_functions = libspreadsheet.main.functions()
+import libsheetmusic.main
+sheetmusic_functions = libsheetmusic.main.functions()

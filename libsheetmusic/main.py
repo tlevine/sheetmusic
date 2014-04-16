@@ -71,7 +71,7 @@ def progression_functions():
         def progression(a,b):
             raise EnvironmentError('This must be run from inside Gnumeric.')
     else:
-        progression = functools.partial(s.from_range_ref, Gnumeric)
+        progression = functools.partial(u.from_range_ref, Gnumeric)
     return {'progression': progression}
 
 def util_functions():

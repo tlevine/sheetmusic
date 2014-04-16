@@ -34,7 +34,7 @@ def test_progression():
 def test_keyed_interval():
     n.assert_equal(music.keyed_interval('sixth', c.Note('G-4'), 'A'), c.Note('E-5'))
     n.assert_equal(music.keyed_interval('sixth', c.Note('G-4'), 'Ab'), c.Note('Eb-5'))
-    n.assert_equal(music.keyed_interval('second', c.Note('D-2'), 'Ab'), c.Note('E-2'))
+    n.assert_equal(music.keyed_interval('second', c.Note('D-2'), 'Ab'), c.Note('Eb-2'))
 
 def test_nonkeyed_interval():
     n.assert_equal(music.nonkeyed_interval('major_sixth', c.Note('G-4')), c.Note('E-5'))

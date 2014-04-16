@@ -1,6 +1,7 @@
 import functools
 
-import libspreadsheet.music as m
+import libsheetmusic.music as m
+import libsheetmusic.util as u
 
 def scale_functions():
     scale_names = [
@@ -41,8 +42,9 @@ def chord_functions():
         'suspended_seventh', 'suspended_triad', 'third_inversion',
         'tonic', 'tonic7', 'triad', 'vi', 'vi7', 'vii', 'vii7',
     ]
-    result = {name + '_chord': functools.partial(m.chord, name) for name in chord_names}
-    result.update({name + '_arpeggio': functools.partial(m.arpeggio, name) for name in chord_names})
+    chord = {name + '_chord': functools.partial(m.chord, name) for name in chord_names}
+    arpeggio = {name + '_arpeggio': functools.partial(m.arpeggio, name) for name in chord_names}
+    return u.merge(chord, arpeggio)
 
 def progression_functions():
     def progression(range_ref, scientific_root_note):
@@ -51,3 +53,6 @@ def progression_functions():
         result = m.progression(the_progression, root_note)
         return range_apply(to_scientific, result)
     return {'progression': progression}
+
+def functions():
+    return reduce(u.merge, [scale_functions(), chord_functions(), progression_functions()])

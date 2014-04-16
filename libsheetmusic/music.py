@@ -8,7 +8,7 @@ import mingus.core.progressions as progressions
 
 def scale(func_name, note):
     'http://code.google.com/p/mingus/wiki/tutorialScales'
-    return [_ascending(note, map(containers.Note, getattr(scales, func_name)(note.name)))]
+    return [map(containers.Note, getattr(scales, func_name)(note.name))]
 
 def chord(*args, **kwargs):
     return [[x] for x in _chord(*args, **kwargs)]
@@ -22,8 +22,7 @@ def progression(the_progression, root_note):
     [['C3', 'E3', 'G3'], ['F3', 'A4', 'C4'], ['G3', 'B4', 'D4']]
     '''
     the_progression_vector = the_progression[0]
-    chords = progressions.to_chords(the_progression, root_note.name)
-    return [_ascending(root_note, chord) for chord in chords]
+    return progressions.to_chords(the_progression, root_note.name)
 
 def nonkeyed_interval(func_name, note):
     other_note_name = getattr(intervals, func_name)(note.name)

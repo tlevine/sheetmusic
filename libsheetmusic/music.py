@@ -54,7 +54,7 @@ def _next_note(first_note, second_note_name):
     If the second note name is less than the first ("G" is greater than "C"),
     return a note of the second name in the octave above the first.
     '''
-    if second_note_name > first_note.name:
+    if second_note_name >= first_note.name:
         second_note_octave = first_note.octave
     else:
         second_note_octave = first_note.octave + 1

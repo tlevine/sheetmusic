@@ -21,6 +21,7 @@ def progression(the_progression, root_note):
     >>> progression(['I','IV','V'], 'C3')
     [['C3', 'E3', 'G3'], ['F3', 'A4', 'C4'], ['G3', 'B4', 'D4']]
     '''
+    the_progression_vector = the_progression[0]
     chords = progressions.to_chords(the_progression, root_note.name)
     return [_ascending(root_note, chord) for chord in chords]
 

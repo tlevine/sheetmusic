@@ -79,4 +79,4 @@ def util_functions():
     return {func_name: getattr(u, func_name) for func_name in func_names}
 
 def functions():
-    return reduce(u.merge, [scale_functions(), chord_functions(), progression_functions(), util_functions()])
+    return reduce(u.merge, [scale_functions(), chord_functions(), progression_functions(), interval_functions(), util_functions()])

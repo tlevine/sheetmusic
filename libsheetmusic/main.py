@@ -18,7 +18,7 @@ def interval_functions():
     ]
     keyed_functions = {name + '_interval': functools.partial(s.keyed_interval, name) for name in keyed}
     nonkeyed_functions = {name + '_interval': functools.partial(s.nonkeyed_interval, name) for name in not_keyed}
-    return u.merge(keyed_functions, notkeyed_functions)
+    return u.merge(keyed_functions, nonkeyed_functions)
 
 def scale_functions():
     scale_names = [

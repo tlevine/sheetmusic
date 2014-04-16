@@ -21,8 +21,8 @@ def progression(the_progression, root_note):
     >>> progression(['I','IV','V'], 'C3')
     [['C3', 'E3', 'G3'], ['F3', 'A4', 'C4'], ['G3', 'B4', 'D4']]
     '''
-    chords = progressions.to_chord(the_progression, root.name)
-    return [_ascending(root, chord) for chord in chords]
+    chords = progressions.to_chords(the_progression, root_note.name)
+    return [_ascending(root_note, chord) for chord in chords]
 
 def _chord(func_name, note, *args, **kwargs):
     'http://code.google.com/p/mingus/wiki/tutorialChords'

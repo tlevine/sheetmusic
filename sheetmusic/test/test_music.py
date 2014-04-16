@@ -9,7 +9,7 @@ def test_scale():
     n.assert_list_equal(observed[0], expected[0])
     n.assert_list_equal(observed, expected)
 
-def test_scale():
+def test_chord():
     observed = music.chord('augmented_major_seventh', c.Note('C-5'))
     expected = [[c.Note(x)] for x in ['C-5', 'E-5', 'G#-5', 'B-6']]
     n.assert_list_equal(observed, expected)

@@ -13,6 +13,6 @@ workbooks = lambda: (Workbook(),)
 
 functions = {
     'sheet': (lambda range_ref: 1.0),
-    'column': (),
-    'row': (),
+    'column': [[3.0]],
+    'row': [[5.0, 6.0, 7.0]],
 }

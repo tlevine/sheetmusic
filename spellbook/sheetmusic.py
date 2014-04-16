@@ -1,10 +1,3 @@
-import re
-
-import mingus.containers as containers
-import mingus.core.chords as chords
-import mingus.core.scales as scales
-import mingus.core.intervals as intervals
-import mingus.core.progressions as progressions
 
 import mingus.extra.LilyPond as LilyPond
 from mingus.midi import fluidsynth

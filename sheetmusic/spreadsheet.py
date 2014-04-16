@@ -21,6 +21,13 @@ def pretty(func):
         return to_scientific(output_int)
     return wrapper
 
+def range_apply(func, list_list):
+    return [[func(cell) for cell in cells] for column in list_list]
+
+def
+    note = from_scientific(scientific_note)
+
+
 @pretty
 def interval(note, halfsteps):
     '''

@@ -26,15 +26,18 @@ else:
         columns = [int(x[0]) for x in Gnumeric.functions['column'](range_ref)]
         return [[sheet.cell_fetch(int(column-1), int(row-1)).get_entered_text() for row in rows] for column in columns]
 
+def from_integer(range_ref):
+    return str(type(range_ref))
+
 def main():
     functions = {
-        'to_integer': to_integer,
+     #  'to_integer': to_integer,
         'from_integer': from_integer,
-        'interval': interval,
-        'chord': chord,
-        'scale': scale,
-        'progression': progression,
-        'sheetmusic': sheetmusic,
+     #  'interval': interval,
+     #  'chord': chord,
+     #  'scale': scale,
+     #  'progression': progression,
+     #  'sheetmusic': sheetmusic,
     }
     return functions
 

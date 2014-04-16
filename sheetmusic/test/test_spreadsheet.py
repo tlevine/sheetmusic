@@ -20,3 +20,6 @@ def test_range_apply():
     observed = ss.range_apply(lambda x:x*10, original)
     expected = [[10,20],[30,40],[50,60]]
     n.assert_list_equal(observed, expected)
+
+def test_from_range_ref():
+    (MockGnumeric, range_ref):

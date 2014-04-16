@@ -22,7 +22,8 @@ def progression(the_progression, root_note):
     [['C3', 'E3', 'G3'], ['F3', 'A4', 'C4'], ['G3', 'B4', 'D4']]
     '''
     the_progression_vector = the_progression[0]
-    return progressions.to_chords(the_progression, root_note.name)
+    print(the_progression)
+    return progressions.to_chords(the_progression_vector, root_note.name)
 
 def nonkeyed_interval(func_name, note):
     other_note_name = getattr(intervals, func_name)(note.name)

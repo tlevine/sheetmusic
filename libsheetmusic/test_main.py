@@ -1,15 +1,11 @@
-import sys
-sys.path.append('spellbook')
-import os
-
 import nose.tools as n
 import lxml.etree
 
-from sheetmusic import sheetmusic_functions as f
+import libspreadsheet.main as main
 
-def test_xml():
+def test_functions():
     fn = os.path.join('spellbook','plugin.xml')
     xml = lxml.etree.parse(fn).getroot()
     from_xml = set(xml.xpath('//function/@name'))
-    from_python = set(f.keys())
+    from_python = set(main.functions())
     n.assert_set_equal(from_xml, from_python)

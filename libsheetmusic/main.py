@@ -1,4 +1,5 @@
 import functools
+import itertools
 
 import libsheetmusic.spreadsheet as s
 import libsheetmusic.util as u
@@ -73,5 +74,9 @@ def progression_functions():
         progression = functools.partial(s.from_range_ref, Gnumeric)
     return {'progression': progression}
 
+def util_functions():
+    func_names = ['_'.join(xs) for xs in itertools.product(['from','to'],['scientific','integer'])]
+    return {func_name: getattr(u, func_name) for func_name in func_names}
+
 def functions():
-    return reduce(u.merge, [scale_functions(), chord_functions(), progression_functions()])
+    return reduce(u.merge, [scale_functions(), chord_functions(), progression_functions(), util_functions()])

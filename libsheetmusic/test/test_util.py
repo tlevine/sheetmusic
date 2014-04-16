@@ -9,4 +9,8 @@ def test_range_apply():
     n.assert_list_equal(observed, expected)
 
 def test_merge():
-    raise NotImplementedError
+    a = {'one':1, 'two': 2}
+    b = {'three': 3, 'four': 4}
+    n.assert_dict_equal(util.merge(a,b), {'one': 1, 'two':2, 'three': 3, 'four': 4})
+    n.assert_dict_equal(a, {'one':1, 'two': 2})
+    n.assert_dict_equal(b, {'three': 3, 'four': 4})

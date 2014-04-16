@@ -25,6 +25,10 @@ def progression(the_progression, root_note):
     chords = progressions.to_chords(the_progression, root_note.name)
     return [_ascending(root_note, chord) for chord in chords]
 
+def nonkeyed_interval(func_name, note):
+    other_note_name = getattr(intervals, func_name)(note.name)
+    return _next_note(note, other_note_name)
+
 def keyed_interval(func_name, note, key):
     other_note_name = getattr(intervals, func_name)(note.name, key)
     return _next_note(note, other_note_name)

@@ -3,6 +3,22 @@ import functools
 import libsheetmusic.music as m
 import libsheetmusic.util as u
 
+def interval_functions():
+    special = 'from_shorthand',
+    maybe_useful = ['get_interval', 'measure', 'invert',]
+    questions = ['is_consonant', 'is_dissonant', 'is_imperfect_consonant', 'is_perfect_consonant',]
+
+    keyed = ['second', 'third', 'fourth','fifth', 'sixth', 'seventh', 'unison']
+    not_keyed = [
+        'augmented_unison',
+        'major_fifth', 'major_fourth', 'major_second', 'major_seventh', 'major_sixth', 'major_third', 'major_unison',
+        'minor_fifth', 'minor_fourth', 'minor_second', 'minor_seventh', 'minor_sixth', 'minor_third', 'minor_unison',
+        'perfect_fifth', 'perfect_fourth', 'unison'
+    ]
+    keyed_functions = {name + '_interval': m.keyed_interval(name) for name in keyed}
+    nonkeyed_functions = {name + '_interval': m.nonkeyed_interval(name) for name in not_keyed}
+    return u.merge(keyed_functions, notkeyed_functions)
+
 def scale_functions():
     scale_names = [
         'aeolian',

@@ -15,12 +15,6 @@ def test_from_scientific():
 def test_to_scientific():
     n.assert_equal(ss.to_scientific(c.Note('A-4')), 'A4')
 
-def test_range_apply():
-    original = [[1,2],[3,4],[5,6]]
-    observed = ss.range_apply(lambda x:x*10, original)
-    expected = [[10,20],[30,40],[50,60]]
-    n.assert_list_equal(observed, expected)
-
 def test_from_range_ref():
     import libsheetmusic.test.MockGnumeric as MockGnumeric
     observed = ss.from_range_ref(MockGnumeric, MockGnumeric.RangeRef())

@@ -41,5 +41,6 @@ def test_next_note():
     n.assert_equal(_next_note(c.Note('D-2'), 'E'), c.Note('E-2'))
 
 def test_ascending():
-    raise NotImplementedError
-    _ascending(note, results):
+    note_names = ['D', 'G', 'A', 'C']
+    n.assert_list_equal(_ascending(c.Note('C-3'), note_names), map(c.Note, ['D-3', 'G-3', 'A-4', 'C-4']))
+    n.assert_list_equal(_ascending(c.Note('F-5'), note_names), map(c.Note, ['D-6', 'G-6', 'A-7', 'C-7']))

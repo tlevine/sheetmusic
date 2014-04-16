@@ -54,7 +54,7 @@ def _next_note(first_note, second_note_name):
 
 def _chord(func_name, note, *args, **kwargs):
     'http://code.google.com/p/mingus/wiki/tutorialChords'
-    return _ascending(note, map(containers.Note, getattr(chords, func_name)(note.name, *args, **kwargs)))
+    return _ascending(note, getattr(chords, func_name)(note.name, *args, **kwargs))
 
 def _ascending(note, note_names):
     prev_note = note

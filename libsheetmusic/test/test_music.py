@@ -35,3 +35,7 @@ def test_next_note():
     n.assert_equal(_next_note(c.Note('D-4'), 'E'), c.Note('E-4'))
     n.assert_equal(_next_note(c.Note('D-4'), 'C'), c.Note('C-5'))
     n.assert_equal(_next_note(c.Note('D-2'), 'E'), c.Note('E-2'))
+
+def test_ascending():
+    raise NotImplementedError
+    _ascending(note, results):

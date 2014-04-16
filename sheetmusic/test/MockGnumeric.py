@@ -1,18 +1,24 @@
-class Workbook:
-    sheets = (Sheet(), Sheet(), Sheet(), )
+class Cell:
+    _cell_text = 'The entered text'
+    def get_entered_text(self, ):
+        return self._cell_text
 
 class Sheet:
-    def cell_fetch(column, row):
+    def cell_fetch(self, column, row):
         return Cell()
 
-class Cell:
-    def get_entered_text():
-        return 'The entered text'
+class Workbook:
+    def sheets(self):
+        return (Sheet(), Sheet(), Sheet(), )
+
+class RangeRef:
+    def get_tuple():
+        raise NotImplementedError
 
 workbooks = lambda: (Workbook(),)
 
 functions = {
-    'sheet': lambda range_ref: 1.0,
-    'column': lambda: [[1.0], [2.0], [3.0], [4.0]],
-    'row': lamba: [[1.0, 2.0, 3.0, 4.0, 5.0, 6.0]],
+    'sheet': lambda _: 1.0,
+    'column': lambda _: [[1.0], [2.0], [3.0], [4.0]],
+    'row': lambda _: [[1.0, 2.0, 3.0, 4.0, 5.0, 6.0]],
 }

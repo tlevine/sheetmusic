@@ -39,7 +39,7 @@ def from_range_ref(Gnumeric, range_ref):
     workbook = Gnumeric.workbooks()[workbook_index]
     sheet_index = int(Gnumeric.functions['sheet'](range_ref)) - 1
     sheet = workbook.sheets()[sheet_index]
-    begin, end = range_ref.get_tuple()
+   #begin, end = range_ref.get_tuple()
     print(Gnumeric.functions['row'](range_ref))
     print(Gnumeric.functions['column'](range_ref))
     rows = map(int, Gnumeric.functions['row'](range_ref)[0])

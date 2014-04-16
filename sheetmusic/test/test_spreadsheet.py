@@ -22,4 +22,6 @@ def test_range_apply():
     n.assert_list_equal(observed, expected)
 
 def test_from_range_ref():
-    (MockGnumeric, range_ref):
+    import sheetmusic.test.MockGnumeric as MockGnumeric
+    observed = ss.from_range_ref(MockGnumeric, MockGnumeric.RangeRef())
+    expected = [[MockGnumeric.Cell._cell_text]*4]*6

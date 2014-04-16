@@ -20,10 +20,10 @@ def test_chord():
     assert_notes_equal([o[0] for o in observed], [e[0] for e in expected])
 
 def test_arpeggio():
-    observed = music.chord('augmented_major_seventh', c.Note('C-5'))
+    observed = music.arpeggio('augmented_major_seventh', c.Note('C-5'))
     expected = [[c.Note(x) for x in ['C-5', 'E-5', 'G#-5', 'B-6']]]
+    n.assert_equal(len(observed), 1)
     assert_notes_equal(observed[0], expected[0])
-#   n.assert_list_equal(observed, expected)
 
 def test_progression():
     observed = music.progression([['I','IV','V']], c.Note('C-3'))

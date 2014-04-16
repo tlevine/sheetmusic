@@ -1,3 +1,7 @@
+import re
+
+import mingus.containers as containers
+
 def from_scientific(scientific_note):
     m = re.match(r'^([^0-9]+)([0-9]+)$', str(scientific_note))
     if not m:
@@ -11,8 +15,7 @@ def to_scientific(integral_note):
     return note.name + str(note.octave)
 
 def range_apply(func, list_list):
-    return [[func(cell) for cell in cells] for column in list_list]
-
+    return [[func(cell) for cell in column] for column in list_list]
 
 def to_integer(scientific_note):
     '''

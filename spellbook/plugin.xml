@@ -164,6 +164,10 @@
         <function name="VII_arpeggio" />
         <function name="VII_chord" />
         <function name="whole_note_scale" />
+        <function name="from_scientific" />
+        <function name="from_integer" />
+        <function name="to_scientific" />
+        <function name="to_integer" />
       </functions>
     </service>
   </services>

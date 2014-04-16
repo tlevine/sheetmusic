@@ -1,25 +1,186 @@
 <?xml version="1.0"?>
 <plugin id="Gnumeric_JkFuncPlugin">
-	<information>
-		<name>Sheetmusic</name>
-		<description>Make music from spreadsheets</description>
-	</information>
-	<loader type="Gnumeric_PythonLoader:python">
-		<attribute name="module_name" value="sheetmusic"/>
-	</loader>
-	<services>
-		<service type="function_group" id="sheetmusic">
-			<category>Local Python</category>
-			<functions>
-				<function name="to_integer"/>
-				<function name="from_integer"/>
-				<function name="interval"/>
-				<function name="chord"/>
-				<function name="scale"/>
-				<function name="progression"/>
-				<function name="sheetmusic"/>
-				<function name="from_range_ref"/>
-			</functions>
-		</service>
-	</services>
+  <information>
+    <name>Sheetmusic</name>
+    <description>Make music from spreadsheets</description>
+  </information>
+  <loader type="Gnumeric_PythonLoader:python">
+    <attribute name="module_name" value="sheetmusic"/>
+  </loader>
+  <services>
+    <service type="function_group" id="sheetmusic">
+      <category>Local Python</category>
+      <functions>
+        <function name="aeolian_scale" />
+        <function name="augmented_major_seventh_arpeggio" />
+        <function name="augmented_major_seventh_chord" />
+        <function name="augmented_minor_seventh_arpeggio" />
+        <function name="augmented_minor_seventh_chord" />
+        <function name="augmented_triad_arpeggio" />
+        <function name="augmented_triad_chord" />
+        <function name="chromatic_scale" />
+        <function name="diatonic_scale" />
+        <function name="diminished_scale" />
+        <function name="diminished_seventh_arpeggio" />
+        <function name="diminished_seventh_chord" />
+        <function name="diminished_triad_arpeggio" />
+        <function name="diminished_triad_chord" />
+        <function name="dominant7_arpeggio" />
+        <function name="dominant7_chord" />
+        <function name="dominant_arpeggio" />
+        <function name="dominant_chord" />
+        <function name="dominant_flat_five_arpeggio" />
+        <function name="dominant_flat_five_chord" />
+        <function name="dominant_flat_ninth_arpeggio" />
+        <function name="dominant_flat_ninth_chord" />
+        <function name="dominant_ninth_arpeggio" />
+        <function name="dominant_ninth_chord" />
+        <function name="dominant_seventh_arpeggio" />
+        <function name="dominant_seventh_chord" />
+        <function name="dominant_sharp_ninth_arpeggio" />
+        <function name="dominant_sharp_ninth_chord" />
+        <function name="dominant_sixth_arpeggio" />
+        <function name="dominant_sixth_chord" />
+        <function name="dominant_thirteenth_arpeggio" />
+        <function name="dominant_thirteenth_chord" />
+        <function name="dorian_scale" />
+        <function name="eleventh_arpeggio" />
+        <function name="eleventh_chord" />
+        <function name="first_inversion_arpeggio" />
+        <function name="first_inversion_chord" />
+        <function name="half_diminished_seventh_arpeggio" />
+        <function name="half_diminished_seventh_chord" />
+        <function name="harmonic_minor_scale" />
+        <function name="hendrix_chord_arpeggio" />
+        <function name="hendrix_chord_chord" />
+        <function name="I7_arpeggio" />
+        <function name="I7_chord" />
+        <function name="I_arpeggio" />
+        <function name="I_chord" />
+        <function name="ii7_arpeggio" />
+        <function name="II7_arpeggio" />
+        <function name="ii7_chord" />
+        <function name="II7_chord" />
+        <function name="ii_arpeggio" />
+        <function name="II_arpeggio" />
+        <function name="ii_chord" />
+        <function name="II_chord" />
+        <function name="iii7_arpeggio" />
+        <function name="III7_arpeggio" />
+        <function name="iii7_chord" />
+        <function name="III7_chord" />
+        <function name="iii_arpeggio" />
+        <function name="III_arpeggio" />
+        <function name="iii_chord" />
+        <function name="III_chord" />
+        <function name="invert_arpeggio" />
+        <function name="invert_chord" />
+        <function name="ionian_scale" />
+        <function name="IV7_arpeggio" />
+        <function name="IV7_chord" />
+        <function name="IV_arpeggio" />
+        <function name="IV_chord" />
+        <function name="locrian_scale" />
+        <function name="lydian_dominant_seventh_arpeggio" />
+        <function name="lydian_dominant_seventh_chord" />
+        <function name="lydian_scale" />
+        <function name="major_ninth_arpeggio" />
+        <function name="major_ninth_chord" />
+        <function name="major_seventh_arpeggio" />
+        <function name="major_seventh_chord" />
+        <function name="major_sixth_arpeggio" />
+        <function name="major_sixth_chord" />
+        <function name="major_thirteenth_arpeggio" />
+        <function name="major_thirteenth_chord" />
+        <function name="major_triad_arpeggio" />
+        <function name="major_triad_chord" />
+        <function name="mediant7_arpeggio" />
+        <function name="mediant7_chord" />
+        <function name="mediant_arpeggio" />
+        <function name="mediant_chord" />
+        <function name="melodic_minor_scale" />
+        <function name="minor_eleventh_arpeggio" />
+        <function name="minor_eleventh_chord" />
+        <function name="minor_major_seventh_arpeggio" />
+        <function name="minor_major_seventh_chord" />
+        <function name="minor_ninth_arpeggio" />
+        <function name="minor_ninth_chord" />
+        <function name="minor_seventh_arpeggio" />
+        <function name="minor_seventh_chord" />
+        <function name="minor_seventh_flat_five_arpeggio" />
+        <function name="minor_seventh_flat_five_chord" />
+        <function name="minor_sixth_arpeggio" />
+        <function name="minor_sixth_chord" />
+        <function name="minor_thirteenth_arpeggio" />
+        <function name="minor_thirteenth_chord" />
+        <function name="minor_triad_arpeggio" />
+        <function name="minor_triad_chord" />
+        <function name="mixolydian_scale" />
+        <function name="natural_minor_scale" />
+        <function name="phrygian_scale" />
+        <function name="progression" />
+        <function name="second_inversion_arpeggio" />
+        <function name="second_inversion_chord" />
+        <function name="seventh_arpeggio" />
+        <function name="seventh_chord" />
+        <function name="sixth_ninth_arpeggio" />
+        <function name="sixth_ninth_chord" />
+        <function name="subdominant7_arpeggio" />
+        <function name="subdominant7_chord" />
+        <function name="subdominant_arpeggio" />
+        <function name="subdominant_chord" />
+        <function name="submediant7_arpeggio" />
+        <function name="submediant7_chord" />
+        <function name="submediant_arpeggio" />
+        <function name="submediant_chord" />
+        <function name="subtonic7_arpeggio" />
+        <function name="subtonic7_chord" />
+        <function name="subtonic_arpeggio" />
+        <function name="subtonic_chord" />
+        <function name="supertonic7_arpeggio" />
+        <function name="supertonic7_chord" />
+        <function name="supertonic_arpeggio" />
+        <function name="supertonic_chord" />
+        <function name="suspended_fourth_ninth_arpeggio" />
+        <function name="suspended_fourth_ninth_chord" />
+        <function name="suspended_fourth_triad_arpeggio" />
+        <function name="suspended_fourth_triad_chord" />
+        <function name="suspended_second_triad_arpeggio" />
+        <function name="suspended_second_triad_chord" />
+        <function name="suspended_seventh_arpeggio" />
+        <function name="suspended_seventh_chord" />
+        <function name="suspended_triad_arpeggio" />
+        <function name="suspended_triad_chord" />
+        <function name="third_inversion_arpeggio" />
+        <function name="third_inversion_chord" />
+        <function name="tonic7_arpeggio" />
+        <function name="tonic7_chord" />
+        <function name="tonic_arpeggio" />
+        <function name="tonic_chord" />
+        <function name="triad_arpeggio" />
+        <function name="triad_chord" />
+        <function name="V7_arpeggio" />
+        <function name="V7_chord" />
+        <function name="V_arpeggio" />
+        <function name="V_chord" />
+        <function name="vi7_arpeggio" />
+        <function name="VI7_arpeggio" />
+        <function name="vi7_chord" />
+        <function name="VI7_chord" />
+        <function name="vi_arpeggio" />
+        <function name="VI_arpeggio" />
+        <function name="vi_chord" />
+        <function name="VI_chord" />
+        <function name="vii7_arpeggio" />
+        <function name="VII7_arpeggio" />
+        <function name="vii7_chord" />
+        <function name="VII7_chord" />
+        <function name="vii_arpeggio" />
+        <function name="VII_arpeggio" />
+        <function name="vii_chord" />
+        <function name="VII_chord" />
+        <function name="whole_note_scale" />
+      </functions>
+    </service>
+  </services>
 </plugin>

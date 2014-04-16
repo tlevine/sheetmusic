@@ -12,7 +12,7 @@ class Cell:
 workbooks = lambda: (Workbook(),)
 
 functions = {
-    'sheet': (lambda range_ref: 1.0),
-    'column': [[3.0]],
-    'row': [[5.0, 6.0, 7.0]],
+    'sheet': lambda range_ref: 1.0,
+    'column': lambda: [[1.0], [2.0], [3.0], [4.0]],
+    'row': lamba: [[1.0, 2.0, 3.0, 4.0, 5.0, 6.0]],
 }

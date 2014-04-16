@@ -34,12 +34,12 @@ def chord_functions():
         'major_ninth', 'major_seventh', 'major_sixth', 'major_thirteenth', 'major_triad',
         'mediant', 'mediant7', 'minor_eleventh', 'minor_major_seventh', 'minor_ninth',
         'minor_seventh', 'minor_seventh_flat_five', 'minor_sixth', 'minor_thirteenth',
-        'minor_triad', 'notes', 'second_inversion', 'seventh', 'sevenths', 'sixth_ninth',
+        'minor_triad', 'second_inversion', 'seventh', 'sixth_ninth',
         'subdominant', 'subdominant7', 'submediant', 'submediant7', 'subtonic', 'subtonic7',
         'supertonic', 'supertonic7',
         'suspended_fourth_ninth', 'suspended_fourth_triad', 'suspended_second_triad',
         'suspended_seventh', 'suspended_triad', 'third_inversion',
-        'tonic', 'tonic7', 'triad', 'triads', 'vi', 'vi7', 'vii', 'vii7',
+        'tonic', 'tonic7', 'triad', 'vi', 'vi7', 'vii', 'vii7',
     ]
     result = {name + '_chord': functools.partial(m.chord, name) for name in chord_names}
     result.update({name + '_arpeggio': functools.partial(m.arpeggio, name) for name in chord_names})

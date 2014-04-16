@@ -47,7 +47,8 @@ def chord_functions():
         'dominant_seventh', 'dominant_sharp_ninth', 'dominant_sixth','dominant_thirteenth',
         'eleventh', 'first_inversion',
         'half_diminished_seventh', 'hendrix_chord',
-        'ii', 'ii7', 'iii', 'iii7', 'invert', 'lydian_dominant_seventh',
+    #   'ii', 'ii7', 'iii', 'iii7', 'vi', 'vi7', 'vii', 'vii7',
+        'invert', 'lydian_dominant_seventh',
         'major_ninth', 'major_seventh', 'major_sixth', 'major_thirteenth', 'major_triad',
         'mediant', 'mediant7', 'minor_eleventh', 'minor_major_seventh', 'minor_ninth',
         'minor_seventh', 'minor_seventh_flat_five', 'minor_sixth', 'minor_thirteenth',
@@ -56,7 +57,7 @@ def chord_functions():
         'supertonic', 'supertonic7',
         'suspended_fourth_ninth', 'suspended_fourth_triad', 'suspended_second_triad',
         'suspended_seventh', 'suspended_triad', 'third_inversion',
-        'tonic', 'tonic7', 'triad', 'vi', 'vi7', 'vii', 'vii7',
+        'tonic', 'tonic7', 'triad',
     ]
     chord = {name + '_chord': functools.partial(s.chord, name) for name in chord_names}
     arpeggio = {name + '_arpeggio': functools.partial(s.arpeggio, name) for name in chord_names}

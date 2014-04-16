@@ -19,3 +19,6 @@ def test_progression():
     expected_str = [['C-3', 'E-3', 'G-3'], ['F-3', 'A-4', 'C-4'], ['G-3', 'B-4', 'D-4']]
     expected = [[c.Note(j) for j in i] for i in expected_str]
     n.assert_list_equal(observed, expected)
+
+def test_interval():
+    raise NotImplementedError

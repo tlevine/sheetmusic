@@ -36,11 +36,11 @@ def test_nonkeyed_interval():
     n.assert_equal(music.keyed_interval('major_second', c.Note('D-2')), c.Note('E-2'))
 
 def test_next_note():
-    n.assert_equal(_next_note(c.Note('D-4'), 'E'), c.Note('E-4'))
-    n.assert_equal(_next_note(c.Note('D-4'), 'C'), c.Note('C-5'))
-    n.assert_equal(_next_note(c.Note('D-2'), 'E'), c.Note('E-2'))
+    n.assert_equal(music._next_note(c.Note('D-4'), 'E'), c.Note('E-4'))
+    n.assert_equal(music._next_note(c.Note('D-4'), 'C'), c.Note('C-5'))
+    n.assert_equal(music._next_note(c.Note('D-2'), 'E'), c.Note('E-2'))
 
 def test_ascending():
     note_names = ['D', 'G', 'A', 'C']
-    n.assert_list_equal(_ascending(c.Note('C-3'), note_names), map(c.Note, ['D-3', 'G-3', 'A-4', 'C-4']))
-    n.assert_list_equal(_ascending(c.Note('F-5'), note_names), map(c.Note, ['D-6', 'G-6', 'A-7', 'C-7']))
+    n.assert_list_equal(music._ascending(c.Note('C-3'), note_names), map(c.Note, ['D-3', 'G-3', 'A-4', 'C-4']))
+    n.assert_list_equal(music._ascending(c.Note('F-5'), note_names), map(c.Note, ['D-6', 'G-6', 'A-7', 'C-7']))

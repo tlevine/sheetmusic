@@ -1,7 +1,7 @@
 import nose.tools as n
 import lxml.etree
 
-import libspreadsheet.main as main
+import libsheetmusic.main as main
 
 def test_functions():
     fn = os.path.join('spellbook','plugin.xml')

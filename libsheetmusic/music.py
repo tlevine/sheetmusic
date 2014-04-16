@@ -25,6 +25,18 @@ def progression(the_progression, root_note):
     chords = progressions.to_chords(the_progression, root_note.name)
     return [_ascending(root_note, chord) for chord in chords]
 
+def interval():
+    special = 'from_shorthand',
+    maybe_useful = ['get_interval', 'measure', 'invert',]
+    questions = ['is_consonant', 'is_dissonant', 'is_imperfect_consonant', 'is_perfect_consonant',]
+    keyed = ['second', 'third', 'fourth','fifth', 'sixth', 'seventh', 'unison']
+    not_keyed = [
+        'augmented_unison',
+        'major_fifth', 'major_fourth', 'major_second', 'major_seventh', 'major_sixth', 'major_third', 'major_unison',
+        'minor_fifth', 'minor_fourth', 'minor_second', 'minor_seventh', 'minor_sixth', 'minor_third', 'minor_unison',
+        'perfect_fifth', 'perfect_fourth', 'unison'
+    ]
+
 def _chord(func_name, note, *args, **kwargs):
     'http://code.google.com/p/mingus/wiki/tutorialChords'
     return _ascending(note, map(containers.Note, getattr(chords, func_name)(note.name, *args, **kwargs)))

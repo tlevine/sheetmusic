@@ -1,6 +1,7 @@
 import mingus.extra.LilyPond as LilyPond
-from mingus.midi import fluidsynth
+from mingus.midi import fluidsynth, MidiFileOut
 fluidsynth.init
+
 
 def sheetmusic(range_ref, key = 'C', meter = (4, 4)):
     for column in cells:

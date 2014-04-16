@@ -23,7 +23,7 @@ def to_integer(scientific_note):
 
     Returns an integer so you can feed this into spreadsheet functions
     '''
-    return int(from_scientific(str(scientific_note)))
+    return int(scientific_note)
 
 def from_integer(integral_note):
     '''
@@ -32,4 +32,4 @@ def from_integer(integral_note):
     Returns the note in scientific notation so you can feed this into
     other sheetmusic functions
     '''
-    return to_scientific(containers.Note(int(integral_note)))
+    return containers.Note(integral_note)

@@ -19,9 +19,9 @@ def scale_functions():
         'phrygian',
         'whole_note'
     ]
-    return {name: functools.partial(m.scale, name) for name in scale_names}
+    return {name + '_scale': functools.partial(m.scale, name) for name in scale_names}
 
-def chord_functions(*args, **kwargs):
+def chord_functions():
     chord_names = [
         'I', 'I7', 'II', 'II7', 'III', 'III7', 'IV', 'IV7', 'V', 'V7', 'VI', 'VI7', 'VII', 'VII7',
         'augmented_major_seventh', 'augmented_minor_seventh', 'augmented_triad',
@@ -41,8 +41,7 @@ def chord_functions(*args, **kwargs):
         'suspended_seventh', 'suspended_triad', 'third_inversion',
         'tonic', 'tonic7', 'triad', 'triads', 'vi', 'vi7', 'vii', 'vii7',
     ]
-
-def arpeggio(*args, **kwargs):
-    return [_chord(*args,**kwargs)]
+    result = {name + '_chord': functools.partial(m.chord, name) for name in chord_names}
+    result.update({name + '_arpeggio': functools.partial(m.arpeggio, name) for name in chord_names})
 
 def progression(the_progression, root_note):

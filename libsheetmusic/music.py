@@ -57,25 +57,11 @@ def _chord(func_name, note, *args, **kwargs):
     'http://code.google.com/p/mingus/wiki/tutorialChords'
     return _ascending(note, map(containers.Note, getattr(chords, func_name)(note.name, *args, **kwargs)))
 
-def _ascending(note, results):
-    results = list(results)
-    if results[0].name >= note.name:
-        octave = note.octave
-    else:
-        octave = note.octave + 1
-
-    for result in results:
-        result.octave = octave
-
-    def correct_octaves(smaller, larger):
-        if larger <= smaller:
-            larger.octave = larger.octave + 1
-
-    smaller = None
-    for result in results:
-        if smaller == None:
-            smaller = result
-            continue
-        larger = result
-        correct_octaves(smaller, result)
-    return results
+def _ascending(note, note_names):
+    prev_note = note
+    output = []
+    for note_name in note_names:
+        next_note = _next_note(prev_note, note_name)
+        output.append(next_note)
+        prev_note = next_note
+    return output

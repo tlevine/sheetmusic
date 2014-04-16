@@ -3,27 +3,33 @@ import mingus.containers as c
 
 import libsheetmusic.music as music
 
+def assert_notes_equal(a, b):
+    convert = lambda notes: ['%s-%d' % (note.name, note.octave) for note in notes]
+    n.assert_list_equal(convert(a),convert(b))
+
 def test_scale():
     observed = music.scale('lydian', c.Note('G',3))
     expected = [map(c.Note, ['G-3', 'A-4', 'B-4', 'C#-4', 'D-4', 'E-4', 'F#-4'])]
-    n.assert_list_equal(observed[0], expected[0])
+    assert_notes_equal(observed[0], expected[0])
     n.assert_list_equal(observed, expected)
 
 def test_chord():
     observed = music.chord('augmented_major_seventh', c.Note('C-5'))
     expected = [[c.Note(x)] for x in ['C-5', 'E-5', 'G#-5', 'B-6']]
-    n.assert_list_equal(observed, expected)
+    assert_notes_equal([o[0] for o in observed], [e[0] for e in expected])
 
 def test_arpeggio():
     observed = music.chord('augmented_major_seventh', c.Note('C-5'))
     expected = [[c.Note(x) for x in ['C-5', 'E-5', 'G#-5', 'B-6']]]
-    n.assert_list_equal(observed, expected)
+    assert_notes_equal(observed[0], expected[0])
+#   n.assert_list_equal(observed, expected)
 
 def test_progression():
     observed = music.progression([['I','IV','V']], c.Note('C-3'))
     expected_str = [['C-3', 'E-3', 'G-3'], ['F-3', 'A-4', 'C-4'], ['G-3', 'B-4', 'D-4']]
     expected = [[c.Note(j) for j in i] for i in expected_str]
-    n.assert_list_equal(observed, expected)
+    for i in range(len(expected)):
+        assert_notes_equal(observed[i], expected[i])
 
 def test_keyed_interval():
     n.assert_equal(music.keyed_interval('sixth', c.Note('G-4'), 'A'), c.Note('E-5'))

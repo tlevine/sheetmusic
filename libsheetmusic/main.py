@@ -44,4 +44,10 @@ def chord_functions():
     result = {name + '_chord': functools.partial(m.chord, name) for name in chord_names}
     result.update({name + '_arpeggio': functools.partial(m.arpeggio, name) for name in chord_names})
 
-def progression(the_progression, root_note):
+def progression_functions():
+    def progression(range_ref, scientific_root_note):
+        the_progression = from_range_ref(range_ref)
+        root_note = from_scientific(scientific_root_note)
+        result = m.progression(the_progression, root_note)
+        return range_apply(to_scientific, result)
+    return {'progression': progression}

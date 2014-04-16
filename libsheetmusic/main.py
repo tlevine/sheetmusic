@@ -15,8 +15,14 @@ def interval_functions():
         'minor_fifth', 'minor_fourth', 'minor_second', 'minor_seventh', 'minor_sixth', 'minor_third', 'minor_unison',
         'perfect_fifth', 'perfect_fourth', 'unison'
     ]
-    keyed_functions = {name + '_interval': m.keyed_interval(name) for name in keyed}
-    nonkeyed_functions = {name + '_interval': m.nonkeyed_interval(name) for name in not_keyed}
+
+    def keyed_interval(func_name, string_note, key):
+        return to_scientific(m.keyed_interval(func_name, from_scientific(string_note), key))
+    def nonkeyed_interval(func_name, string_note):
+        return to_scientific(m.nonkeyed_interval(func_name, from_scientific(string_note)))
+
+    keyed_functions = {name + '_interval': functools.partial(keyed_interval, name) for name in keyed}
+    nonkeyed_functions = {name + '_interval': functools.partial(nonkeyed_interval, name) for name in not_keyed}
     return u.merge(keyed_functions, notkeyed_functions)
 
 def scale_functions():

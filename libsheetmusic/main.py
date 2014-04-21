@@ -37,7 +37,8 @@ def scale_functions():
         'phrygian',
         'whole_note'
     ]
-    return {name + '_scale': lambda base: s.scale(name, base) for name in scale_names}
+    template = 'lambda base: s.scale("%s", base)'
+    return {name + '_scale':  eval(template % name) for name in scale_names}
 
 def chord_functions():
     chord_names = [

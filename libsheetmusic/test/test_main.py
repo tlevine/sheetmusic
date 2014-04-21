@@ -16,3 +16,9 @@ def test_cases():
     observed = dict(collections.Counter(k.upper() for k in main.functions().keys()))
     expected = {k.upper():1 for k in main.functions().keys()}
     n.assert_dict_equal(observed, expected)
+
+def test_diatonic_scale():
+    observed = main.functions()['diatonic_scale']('C4')
+    expected = [['C4', 'D4', 'E4', 'F4', 'G4', 'A5', 'B5', ]]
+    n.assert_list_equal(observed[0], expected[0])
+    n.assert_list_equal(observed, expected)

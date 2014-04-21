@@ -77,8 +77,8 @@ def progression_functions():
         def progression(a,b):
             raise EnvironmentError('This must be run from inside Gnumeric.')
     else:
-        def progression(root):
-            return s.progression(u.from_range_ref, Gnumeric, root)
+        def progression(progression_range_ref, string_root_note):
+            return s.progression(Gnumeric, progression_range_ref, string_root_note)
     return {'progression': progression}
 
 def util_functions():

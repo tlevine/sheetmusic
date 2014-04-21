@@ -48,6 +48,17 @@ def from_range_ref(Gnumeric, range_ref):
     workbook = Gnumeric.workbooks()[workbook_index]
     sheet_index = int(Gnumeric.functions['sheet'](range_ref)) - 1
     sheet = workbook.sheets()[sheet_index]
-    rows = map(int, Gnumeric.functions['row'](range_ref)[0])
-    columns = [int(x[0]) for x in Gnumeric.functions['column'](range_ref)]
+    
+    rows_list_or_float = Gnumeric.functions['row'](range_ref)
+    if type(rows_list_or_float) == list:
+        rows = [int(x[0]) for x in rows_list_or_float]
+    elif type(rows_list_or_float) == float:
+        rows = [int(rows_list_or_float)]
+    
+    columns_list_or_float = Gnumeric.functions['column'](range_ref)
+    if type(columns_list_or_float) == list:
+        columns = [int(x[0]) for x in columns_list_or_float]
+    elif type(columns_list_or_float) == float:
+        columns = [int(columns_list_or_float)]
+
     return [[sheet.cell_fetch(int(column-1), int(row-1)).get_rendered_text() for row in rows] for column in columns]

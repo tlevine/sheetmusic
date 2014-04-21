@@ -16,8 +16,10 @@ def interval_functions():
         'minor_fifth', 'minor_fourth', 'minor_second', 'minor_seventh', 'minor_sixth', 'minor_third', 'minor_unison',
         'perfect_fifth', 'perfect_fourth', 'unison'
     ]
-    keyed_functions = {name + '_interval': (s.keyed_interval, name) for name in keyed}
-    nonkeyed_functions = {name + '_interval': (s.nonkeyed_interval, name) for name in not_keyed}
+    keyed_template = 'lambda root, key: s.keyed_interval("%s", root, key)'
+    nonkeyed_interval = 'lambda root: s.nonkeyed_interval("%s", root)'
+    keyed_functions = {name + '_interval': eval(keyed_template % name) for name in keyed}
+    nonkeyed_functions = {name + '_interval': eval(nonkeyed_interval % name) for name in not_keyed}
     return u.merge(keyed_functions, nonkeyed_functions)
 
 def scale_functions():

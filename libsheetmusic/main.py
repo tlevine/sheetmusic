@@ -63,8 +63,11 @@ def chord_functions():
         'suspended_seventh', 'suspended_triad', 'third_inversion',
         'tonic', 'tonic7', 'triad',
     ]
-    chord = {name + '_chord': lambda base:s.chord(name, base) for name in chord_names}
-    arpeggio = {name + '_arpeggio': lambda base: s.arpeggio(name, base) for name in chord_names}
+    chord_template = 'lambda base: s.chord("%s", base)'
+    arpeggio_template = 'lambda base: s.arpeggio("%s", base)'
+
+    chord = {name + '_chord': eval(chord_template % name) for name in chord_names}
+    arpeggio = {name + '_arpeggio': eval(arpeggio_template % name) for name in chord_names}
     return u.merge(chord, arpeggio)
 
 def progression_functions():

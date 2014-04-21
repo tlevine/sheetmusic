@@ -51,7 +51,7 @@ def from_range_ref(Gnumeric, range_ref):
     
     rows_list_or_float = Gnumeric.functions['row'](range_ref)
     if type(rows_list_or_float) == list:
-        rows = [int(x[0]) for x in rows_list_or_float]
+        rows = [int(x) for x in rows_list_or_float[0]]
     elif type(rows_list_or_float) == float:
         rows = [int(rows_list_or_float)]
     

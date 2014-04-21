@@ -14,7 +14,7 @@ def arpeggio(func_name, string_note, *args, **kwargs):
 
 def progression(Gnumeric, progression_range_ref, string_root_note):
     the_progression = u.from_range_ref(Gnumeric, progression_range_ref)
-    root_note = from_scientific(string_root_note)
+    root_note = u.from_scientific(string_root_note)
     return u.range_apply(u.to_scientific, m.progression(the_progression, root_note))
 
 def keyed_interval(func_name, string_note, key):

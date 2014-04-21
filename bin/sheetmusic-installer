@@ -1,2 +1,3 @@
 #!/usr/bin/env python2
-print('Move the stuff from make install to here.')
+import libsheetmusic.install
+libsheetmusic.install.install()

@@ -52,9 +52,8 @@ def from_range_ref(Gnumeric, range_ref):
     columns = [int(x[0]) for x in Gnumeric.functions['column'](range_ref)]
     return [[sheet.cell_fetch(int(column-1), int(row-1)).get_rendered_text() for row in rows] for column in columns]
 
-def to_function(callable, name):
+def to_function(name, callable):
     def f(*args, **kwargs):
         return callable(*args, **kwargs)
-#   f.__name__ = name
-#   f.__doc__ = callable.__doc__
+    f.__name__ = name
     return f

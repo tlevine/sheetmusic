@@ -80,4 +80,4 @@ def util_functions():
 
 def functions():
     callables = reduce(u.merge, [scale_functions(), chord_functions(), progression_functions(), interval_functions(), util_functions()])
-    return {k:u.to_function(v, k) for k,v in callables.items()}
+    return {k:u.to_function(k, v) for k,v in callables.items()}

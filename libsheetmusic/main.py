@@ -16,8 +16,8 @@ def interval_functions():
         'minor_fifth', 'minor_fourth', 'minor_second', 'minor_seventh', 'minor_sixth', 'minor_third', 'minor_unison',
         'perfect_fifth', 'perfect_fourth', 'unison'
     ]
-    keyed_functions = {name + '_interval': functools.partial(s.keyed_interval, name) for name in keyed}
-    nonkeyed_functions = {name + '_interval': functools.partial(s.nonkeyed_interval, name) for name in not_keyed}
+    keyed_functions = {name + '_interval': (s.keyed_interval, name) for name in keyed}
+    nonkeyed_functions = {name + '_interval': (s.nonkeyed_interval, name) for name in not_keyed}
     return u.merge(keyed_functions, nonkeyed_functions)
 
 def scale_functions():
@@ -37,7 +37,7 @@ def scale_functions():
         'phrygian',
         'whole_note'
     ]
-    return {name + '_scale': functools.partial(s.scale, name) for name in scale_names}
+    return {name + '_scale': lambda base: s.scale(name, base) for name in scale_names}
 
 def chord_functions():
     chord_names = [
@@ -60,8 +60,8 @@ def chord_functions():
         'suspended_seventh', 'suspended_triad', 'third_inversion',
         'tonic', 'tonic7', 'triad',
     ]
-    chord = {name + '_chord': functools.partial(s.chord, name) for name in chord_names}
-    arpeggio = {name + '_arpeggio': functools.partial(s.arpeggio, name) for name in chord_names}
+    chord = {name + '_chord': lambda base:s.chord(name, base) for name in chord_names}
+    arpeggio = {name + '_arpeggio': lambda base: s.arpeggio(name, base) for name in chord_names}
     return u.merge(chord, arpeggio)
 
 def progression_functions():
@@ -71,13 +71,13 @@ def progression_functions():
         def progression(a,b):
             raise EnvironmentError('This must be run from inside Gnumeric.')
     else:
-        progression = functools.partial(u.from_range_ref, Gnumeric)
+        def progression(root):
+            return s.progression(u.from_range_ref, Gnumeric, root)
     return {'progression': progression}
 
 def util_functions():
     func_names = ['_'.join(xs) for xs in itertools.product(['from','to'],['scientific','integer'])]
-    return {func_name: getattr(u, func_name) for func_name in func_names}
+    return {func_name: getattr(u, func_name), for func_name in func_names}
 
-def functions():
-    callables = reduce(u.merge, [scale_functions(), chord_functions(), progression_functions(), interval_functions(), util_functions()])
-    return {k:u.to_function(k, v) for k,v in callables.items()}
+def function_components():
+    return reduce(u.merge, [scale_functions(), chord_functions(), progression_functions(), interval_functions(), util_functions()])

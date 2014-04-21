@@ -51,9 +51,3 @@ def from_range_ref(Gnumeric, range_ref):
     rows = map(int, Gnumeric.functions['row'](range_ref)[0])
     columns = [int(x[0]) for x in Gnumeric.functions['column'](range_ref)]
     return [[sheet.cell_fetch(int(column-1), int(row-1)).get_rendered_text() for row in rows] for column in columns]
-
-def to_function(name, callable):
-    def f(*args, **kwargs):
-        return callable(*args, **kwargs)
-    f.__name__ = name
-    return f

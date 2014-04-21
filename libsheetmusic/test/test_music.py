@@ -13,6 +13,13 @@ def test_scale():
     assert_notes_equal(observed[0], expected[0])
     n.assert_list_equal(observed, expected)
 
+def test_diatonic_scale():
+    observed = music.scale('diatonic', c.Note('C-3'))
+    expected = [map(c.Note, ['C-3', 'D-3', 'E-3', 'F-3', 'G-3', 'A-4', 'B-4'])]
+    assert_notes_equal(observed[0], expected[0])
+    n.assert_list_equal(observed, expected)
+
+
 def test_chord():
     observed = music.chord('augmented_major_seventh', c.Note('C-5'))
     expected = [[c.Note(x)] for x in ['C-5', 'E-5', 'G#-5', 'B-6']]

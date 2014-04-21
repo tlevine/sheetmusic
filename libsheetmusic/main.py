@@ -77,7 +77,7 @@ def progression_functions():
 
 def util_functions():
     func_names = ['_'.join(xs) for xs in itertools.product(['from','to'],['scientific','integer'])]
-    return {func_name: getattr(u, func_name), for func_name in func_names}
+    return {func_name: getattr(u, func_name) for func_name in func_names}
 
-def function_components():
+def functions():
     return reduce(u.merge, [scale_functions(), chord_functions(), progression_functions(), interval_functions(), util_functions()])

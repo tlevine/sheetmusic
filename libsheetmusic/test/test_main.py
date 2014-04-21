@@ -22,3 +22,8 @@ def test_diatonic_scale():
     expected = [['C4', 'D4', 'E4', 'F4', 'G4', 'A5', 'B5', ]]
     n.assert_list_equal(observed[0], expected[0])
     n.assert_list_equal(observed, expected)
+
+def test_major_sixth_interval():
+    observed = main.functions()['major_sixth_interval']('C2')
+    expected = 'A3'
+    n.assert_equal(observed, expected)

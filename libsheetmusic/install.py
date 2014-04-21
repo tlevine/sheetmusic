@@ -11,7 +11,7 @@ def get_plugin_xml():
     plugin = lxml.etree.fromstring(templates.plugin_xml)
     functions = plugin.xpath('//functions')[0]
     for name in main.functions().keys():
-        functions.insert(0, lxml.etree.Element('function', attrib = {'name': 'aoue'}))
+        functions.insert(0, lxml.etree.Element('function', attrib = {'name': name}))
     return lxml.etree.tostring(plugin)
 
 def get_version(system = os.system):

@@ -36,8 +36,9 @@ def bars(key, meter, notes):
     left = notes[:4]
     right = notes[4:]
 
-    bar = c.Bar(key, meter)
-    bar.place_notes(the_notes, upper)
-
-    yield bar
-    yield _build_bars(key, meter, right)
+    if len(left) > 0:
+        bar = c.Bar(key, meter)
+        bar.place_notes(left, upper)
+        yield bar
+        for bar in bars(key, meter, right):
+            yield bar

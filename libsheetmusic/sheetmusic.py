@@ -33,8 +33,8 @@ def bars(key, meter, notes):
     Group the notes into bars.
     '''
     upper, lower = meter
-    left = notes[:4]
-    right = notes[4:]
+    left = notes[:lower]
+    right = notes[lower:]
 
     if len(left) > 0:
         bar = c.Bar(key, meter)

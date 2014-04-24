@@ -3,6 +3,7 @@ import itertools
 
 import libsheetmusic.spreadsheet as s
 import libsheetmusic.util as u
+import libsheetmusic.sheetmusic as sm
 
 def interval_functions():
     special = 'from_shorthand',
@@ -70,20 +71,29 @@ def chord_functions():
     arpeggio = {name + '_arpeggio': eval(arpeggio_template % name) for name in chord_names}
     return u.merge(chord, arpeggio)
 
-def progression_functions():
+def gnumeric_functions():
     try:
         import Gnumeric
     except ImportError:
-        def progression(a,b):
+        def f(*args, **kwargs):
             raise EnvironmentError('This must be run from inside Gnumeric.')
+        sheetmusic = f
+        progression = f
     else:
         def progression(progression_range_ref, string_root_note):
             return s.progression(Gnumeric, progression_range_ref, string_root_note)
-    return {'progression': progression}
+        def sheetmusic(range_ref, key = 'C', upper = 4, lower = 4, header = False):
+            return sm.sheetmusic(Gnumeric, range_ref, key, upper, lower, header)
+
+    return {
+        'progression': progression,
+        'sheetmusic': sheetmusic,
+    }
 
 def util_functions():
     func_names = ['_'.join(xs) for xs in itertools.product(['from','to'],['scientific','integer'])]
     return {func_name: getattr(u, func_name) for func_name in func_names}
 
+
 def functions():
-    return reduce(u.merge, [scale_functions(), chord_functions(), progression_functions(), interval_functions(), util_functions()])
+    return reduce(u.merge, [scale_functions(), chord_functions(), interval_functions(), util_functions(), gnumeric_functions()])

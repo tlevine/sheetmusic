@@ -3,9 +3,11 @@ import functools
 import mingus.containers as c
 import mingus.extra.LilyPond as LilyPond
 
-def sheetmusic(Gnumeric, range_ref, key = 'C', meter = (4, 4), header = False):
-    partial_bars = functools.partial(bars, key, meter)
-    cells = from_range_ref(Gnumeric, range_ref)
+import libsheetmusic.util as u
+
+def sheetmusic(Gnumeric, range_ref, key = 'C', upper = 4, lower = 4, header = False):
+    partial_bars = functools.partial(bars, key, (upper, lower))
+    cells = u.from_range_ref(Gnumeric, range_ref)
     for column in cells:
         track = build_track(header, partial_bars, column)
         return LilyPond.to_png(track, '/tmp/track.png')

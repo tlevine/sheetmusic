@@ -1,5 +1,6 @@
 import functools
 
+import mingus.containers as c
 import mingus.extra.LilyPond as LilyPond
 
 def sheetmusic(Gnumeric, range_ref, key = 'C', meter = (4, 4), header = False):
@@ -9,7 +10,7 @@ def sheetmusic(Gnumeric, range_ref, key = 'C', meter = (4, 4), header = False):
         track = build_track(header, partial_bars, column)
         return LilyPond.to_png(track, '/tmp/track.png')
 
-def build_track(header, partial_bars, column)
+def build_track(header, partial_bars, column):
     '''
     header :: bool
     column :: [Note]
@@ -22,7 +23,7 @@ def build_track(header, partial_bars, column)
         instrument = None
         notes = column
 
-    track = containers.Track(instrument)
+    track = c.Track(instrument)
     for bar in partial_bars(notes):
         track += bar
     return track
@@ -35,7 +36,7 @@ def bars(key, meter, notes):
     left = notes[:4]
     right = notes[4:]
 
-    bar = containers.Bar(key, meter)
+    bar = c.Bar(key, meter)
     bar.place_notes(the_notes, upper)
 
     yield bar

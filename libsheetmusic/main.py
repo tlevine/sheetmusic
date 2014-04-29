@@ -100,10 +100,18 @@ def util_functions():
     func_names = ['_'.join(xs) for xs in itertools.product(['from','to'],['scientific','integer'])]
     return {func_name: getattr(u, func_name) for func_name in func_names}
 
-def other_functions():
-    return {
-        'eval': eval,
-    }
+custom_functions = {}
+def function_functions():
+    def define(x):
+        result = eval(x)
+        i = hash(x)
+        custom_functions[i] = result
+        return i
+
+    def call(i, *args):
+        return custom_functions[i](*args)
+
+    return {'define': define, 'call': call}
 
 def functions():
-    return reduce(u.merge, [scale_functions(), chord_functions(), interval_functions(), util_functions(), gnumeric_functions(), other_functions()])
+    return reduce(u.merge, [scale_functions(), chord_functions(), interval_functions(), util_functions(), gnumeric_functions(), function_functions()])

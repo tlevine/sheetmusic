@@ -104,12 +104,11 @@ custom_functions = {}
 def function_functions():
     def define(x):
         result = eval(x)
-        i = hash(x)
-        custom_functions[i] = result
-        return i
+        custom_functions[x] = result
+        return x
 
-    def call(i, *args):
-        return custom_functions[i](*args)
+    def call(x, *args):
+        return custom_functions[x](*args)
 
     return {'define': define, 'call': call}
 

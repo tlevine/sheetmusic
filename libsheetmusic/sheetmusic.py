@@ -44,3 +44,6 @@ def bars(key, meter, notes):
         yield bar
         for bar in bars(key, meter, right):
             yield bar
+
+def to_midi(Gnumeric, fn, range_ref_or_cell):
+    cells = u.from_range_ref(Gnumeric, range_ref)

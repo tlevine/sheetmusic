@@ -79,19 +79,25 @@ def gnumeric_functions():
             raise EnvironmentError('This must be run from inside Gnumeric.')
         sheetmusic = f
         progression = f
+        to_midi = f
     else:
         def progression(progression_range_ref, string_root_note):
             return s.progression(Gnumeric, progression_range_ref, string_root_note)
         def sheetmusic(range_ref, key = 'C', upper = 4, lower = 4, header = False):
             return sm.sheetmusic(Gnumeric, range_ref, key, upper, lower, header)
+        def to_midi(fn, range_ref_or_cell):
+            return sm.to_midi(Gnumeric, fn, range_ref_or_cell)
 
     return {
         'progression': progression,
         'sheetmusic': sheetmusic,
+        'to_midi': to_midi,
+#       'play': play,
+#       'loop': loop,
     }
 
 def util_functions():
-    func_names = ['_'.join(xs) for xs in itertools.product(['from','to'],['scientific','integer'])]
+    func_names = ['_'.join(xs) for xs in itertools.product(['from','to'],['scientific','integer'])] + ['eval']
     return {func_name: getattr(u, func_name) for func_name in func_names}
 
 def functions():

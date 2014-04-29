@@ -46,4 +46,7 @@ def bars(key, meter, notes):
             yield bar
 
 def to_midi(Gnumeric, fn, range_ref_or_cell):
-    cells = u.from_range_ref(Gnumeric, range_ref)
+    if 'RangeRef' in type(range_ref_or_cell):
+        MidiFileOut.write_Composition(fn, to_composition(u.from_range_ref(Gnumeric, range_ref_or_cell)))
+    else:
+        MidiFileOut.write_Note(fn, from_scientific(range_ref_or_cell))

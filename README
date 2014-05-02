@@ -78,10 +78,45 @@ We wrote this music video in R.
 
 (slide with a stereotypical picture: What isn't data analysis?)
 
-% When we start using data analysis software for other things,
-% we also blur the line between data analysis and other things
+When we start using data analysis software for other things,
+we also blur the line between data analysis and other things.
+Data analysis seems very magical to many people. When we represent
+data as familiar things like music, the analysis becomes more
+accessible.
+
+% slide with abstract data versus concrete stuff
+
+Numbers are abstract, theoretical things that don't have to be
+related to the world.
+
+% slide with conversions between data
+
+When I say that data things are "magical" to people, I mean that
+people don't recognize that we can convert between these abstract
+numbers and this real world. When I explain the conversion in
+excruciating detail, it makes perfect sense to people.
+
+% 
+
+If I say that the computer is going to (do something) and
+figure out (something), it can sound like the computer is doing
+something very fancy that you couldn't possibly understand.
+But if I say that the computer is..., it's almost kind of boring and obvious.
+
+% a fancy-looking plot
+
+The same goes for conversions in the other direction. This plot
+might look very fancy, but we can decompose it...
+
+% Grammar of graphics slide
+
+The Grammar of Graphics..., non-visual aesthetics
+
+
+<!--
 I find in general that disciplines are more usefully thought of as
 mindsets rather than special skills.
+-->
 
 % Grammar of graphics
 

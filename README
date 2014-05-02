@@ -1,3 +1,112 @@
+(data table slide)
+
+The [data table](http://www.datakind.org/blog/whats-in-a-table/)
+is an intuitive paradigm for many people. In a data table, rows
+correspond to observations/records, and columns to variables/attributes
+collected about each observation/record.
+
+(data table in a spreadsheet slide)
+
+We can use spreadsheets to represent data tables, and we can use
+data tables to represent musical scores.
+
+(spreadsheet versus ordinary sheet music slide)
+
+In this figure we see music represented in two forms.
+
+(spreadsheet versus ordinary sheet music slide, with column/staff highlighted)
+
+Each column in the spreadsheet corresponds to a staff in the sheet music,
+
+(spreadsheet versus ordinary sheet music slide, with row/beat highlighted)
+
+and each row in the spreadsheet corresponds to a beat.
+
+(spreadsheet versus ordinary sheet music slide, with styles for dynamics)
+
+We can use color to represent dynamics (how loud or soft the sound is).
+
+(spreadsheet versus ordinary sheet music slide, with borders for bars)
+
+Music is often divided into measures. In sheet music, this is typically
+represented with bars, and we can do the same in spreadsheets.
+
+(Slide: ddpy.to_midi(df), with a diagram of all of the translations)
+
+Spreadsheets store data, so we can use them just as we can use any data
+table format.
+
+(Slide: synthesizer functions)
+
+Spreadsheets are also code, so we can use them to make music.
+I wrote a package that lets you use a spreadsheet as a music synthesizer.
+To be confusing, let's call it "SheetMusic".
+
+% Explain, functions, examples
+
+% Lots of data analysis software programs function as generalized
+% application programming languages.
+% For example, spreadsheets, R, Postgres, SAS
+
+(csvsoundsystem picture)
+
+My colleagues at csv soundsystem and I have written music synthesizers
+for several data analysis programs. The basic paradigm is to represent
+musical scores in data structures that are designed for storing data tables.
+
+(ddr slide)
+
+In R, this is the `data.frame`.
+
+(ddpy slide)
+
+In pandas (Python), this is the `DataFrame`.
+
+(quote the reddit comment about how we're economists who don't know anything else)
+
+I like to represent music as data tables because I'm very used to thinking
+about data tables, but it turns out that other nice things happen when we
+use data analysis software to make music.
+
+(slide with fms symphony)
+
+The most obvious thing is that it lets us make music from empirical data.
+Here's a music video about the finances of the United States government.
+(Explain what's in the video.)
+
+We wrote this music video in R.
+
+(slide with a stereotypical picture: What isn't data analysis?)
+
+% When we start using data analysis software for other things,
+% we also blur the line between data analysis and other things
+I find in general that disciplines are more usefully thought of as
+mindsets rather than special skills.
+
+% Grammar of graphics
+
+% examples from csv
+
+% education: making data more tangible
+
+% This can go at the end:
+% csv soundsystem is a group of people who hang out in a coffee shop
+% and do silly things with data. We've recently been explorying ways
+% of representing data as music, video, food and Twitter bots.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Weird features
 Darker text produces louder notes.
 

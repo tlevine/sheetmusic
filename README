@@ -1,7 +1,7 @@
 (data table slide)
 
 The [data table](http://www.datakind.org/blog/whats-in-a-table/)
-is an intuitive paradigm for many people. In a data table, rows
+is an intuitive paradigm for many people. In a tidy data table, rows
 correspond to observations/records, and columns to variables/attributes
 collected about each observation/record.
 
@@ -175,6 +175,27 @@ data into music or food, we just need to come up with parametrized primitive
 musical or gastronomical elements. When we produce data-driven music or food,
 we are simply using a more accessible plotting device to map abstract data
 onto real things that we can perceive.
+
+
+
+...
+
+
+> **Summary**
+> 
+> * Convert the world to tidy data tables.
+> * Convert tidy data tables back to the world.
+> * These conversions are less magical than we make them seem.
+> * Data analysis software does a lot more than that.
+> * So we make music from spreadsheets.
+
+* We can represent lots of things as tidy data tables.
+* We convert abstract data tables into concrete things.
+* None of this stuff is magic, and anyone can understand it if we just explain it.
+* We can blur the boundary between data analysis software and everything else.
+* And thus we make music from spreadsheets.
+
+
 
 
 

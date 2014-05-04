@@ -80,6 +80,7 @@ def gnumeric_functions():
         sheetmusic = f
         progression = f
         to_midi = f
+        play = f
     else:
         def progression(progression_range_ref, string_root_note):
             return s.progression(Gnumeric, progression_range_ref, string_root_note)

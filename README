@@ -107,35 +107,70 @@ Data analysis seems very magical to many people. When we represent
 data as familiar things like music, the analysis becomes more
 accessible.
 
-% slide with abstract data versus concrete stuff
+% slide with abstract data versus concrete guacamole
 
 Numbers are abstract, theoretical things that don't have to be
 related to the world.
 
-% slide with conversions between data
+% slide with conversions between data and guacamole
 
 When I say that data things are "magical" to people, I mean that
 people don't recognize that we can convert between these abstract
 numbers and this real world. When I explain the conversion in
 excruciating detail, it makes perfect sense to people.
 
-% 
+% Wetlands thing to spreadsheet
 
-If I say that the computer is going to (do something) and
-figure out (something), it can sound like the computer is doing
+I'm apparently pretty good at converting data formats. By that,
+I mean converting scans of photocopies of non-standard notifications
+that someone wants to dredge or fill a wetland.
+If I say that the computer is going to read the image and
+figure out what the data table says, it can sound like the computer is doing
 something very fancy that you couldn't possibly understand.
-But if I say that the computer is..., it's almost kind of boring and obvious.
+
+(slide)
+
+Instead, I can say that the computer is approximately doing the following.
+
+1. separating the image into a million dots, with most of the dots white
+    and some of them black
+2. doing the same with all of the letters of the alphabet, using a typeface
+    that I specified to be similar to the one in the document
+3. aligning the letters to find things that match
+4. coming up with a long series of letters for the whole file based on the
+    above process
+5. looking through that series of letters until it finds the word
+    "LOCATION", in capital letters
+6. looking at all of the letters within about 100 letters of that word
+7. looking for some digits separated by a comma
+8. calling those digits the longitude and latitude
+
+When I do this, it's almost kind of boring and obvious.
 
 % a fancy-looking plot
 
 The same goes for conversions in the other direction. This plot
-might look very fancy, but we can decompose it...
+might look very fancy, but we can decompose it into a bunch of simple
+components.
 
-% Grammar of graphics slide
+* Each dot is a XXX
+* The distance from the bottom is how YYY the XXX is.
+* The distance from the right is how YYY the XXX is.
+* The size of the dot is XXX
+* The lines connect XXXs of the same YYY.
+* ...
 
-The Grammar of Graphics..., non-visual aesthetics
+This is still a bit scary for some people, but I find that it gets less
+scary when we create more tangible outputs.
 
-By making data more tangible, we make them less scary and more easy to understand.
+% Mention "aesthetics" and "elements"
+
+As XXX thinks about graphics, we convert our abstract data into primitive
+graphical elements through a mapping that he calls "aesthetics".
+
+% Grammar of graphics slide quoting the non-visual aesthetics bit
+
+There's no reason that these
 
 
 

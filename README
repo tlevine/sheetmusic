@@ -40,12 +40,18 @@ table format.
 
 Spreadsheets are also code, so we can use them to make music.
 I wrote a package that lets you use a spreadsheet as a music synthesizer.
+
+("pip2 install sheetmusic")
+
 To be confusing, let's call it "SheetMusic".
 
 % Explain, functions, examples
 
-% Lots of data analysis software programs function as generalized
-% application programming languages.
+I find that people are overly constrained in their perception of what
+different software tools can do. In particular, people think of things
+like spreadsheets as specialized data analysis software even though they
+function as generalized application programming languages.
+
 % For example, spreadsheets, R, Postgres, SAS
 
 (csvsoundsystem picture)

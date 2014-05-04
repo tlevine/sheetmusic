@@ -87,12 +87,14 @@ def gnumeric_functions():
             return sm.sheetmusic(Gnumeric, range_ref, key, upper, lower, header)
         def to_midi(fn, range_ref_or_cell):
             return sm.to_midi(Gnumeric, fn, range_ref_or_cell)
+        def play(range_ref_or_cell):
+            return return sm.play(Gnumeric, range_ref_or_cell)
 
     return {
         'progression': progression,
         'sheetmusic': sheetmusic,
         'to_midi': to_midi,
-#       'play': play,
+        'play': play,
 #       'loop': loop,
     }
 

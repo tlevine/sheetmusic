@@ -2,6 +2,7 @@ import functools
 
 import mingus.containers as c
 import mingus.extra.LilyPond as LilyPond
+from mingus.midi import MidiFileOut
 
 import libsheetmusic.util as u
 
@@ -46,7 +47,7 @@ def bars(key, meter, notes):
             yield bar
 
 def to_midi(Gnumeric, fn, range_ref_or_cell):
-    if 'RangeRef' in type(range_ref_or_cell):
+    if 'RangeRef' in str(type(range_ref_or_cell)):
         MidiFileOut.write_Composition(fn, to_composition(u.from_range_ref(Gnumeric, range_ref_or_cell)))
     else:
         MidiFileOut.write_Note(fn, from_scientific(range_ref_or_cell))

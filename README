@@ -48,17 +48,33 @@ To be confusing, let's call it "SheetMusic".
 % Explain, functions, examples
 
 I find that people are overly constrained in their perception of what
-different software tools can do. In particular, people think of things
+different software tools can do.
+
+> Some data analysis tools
+>
+> **Spreadsheet** (Gnumeric
+> **R**: ddr
+> **Python (pandas)**: ddpy, numpy
+> **Relational databases: PostgreSQL, SQL Server, MySQL, SQLite
+
+In particular, people think of things
 like spreadsheets as specialized data analysis software even though they
 function as generalized application programming languages.
-
-% For example, spreadsheets, R, Postgres, SAS
 
 (csvsoundsystem picture)
 
 My colleagues at csv soundsystem and I have written music synthesizers
-for several data analysis programs. The basic paradigm is to represent
-musical scores in data structures that are designed for storing data tables.
+for several data analysis programs.
+
+> Music synthesizers for data analysis programs
+>
+> **Spreadsheet** (Gnumeric): sheetmusic
+> **R**: ddr
+> **Python (pandas)**: ddpy
+> Next stop: **PostgreSQL**?
+
+The basic paradigm is to represent musical scores in data structures that
+are designed for storing data tables.
 
 (ddr slide)
 
@@ -70,6 +86,7 @@ In pandas (Python), this is the `DataFrame`.
 
 (quote the reddit comment about how we're economists who don't know anything else)
 
+Here's what someone on reddit had to say about one of our music videos.
 I like to represent music as data tables because I'm very used to thinking
 about data tables, but it turns out that other nice things happen when we
 use data analysis software to make music.

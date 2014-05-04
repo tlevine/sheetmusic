@@ -50,13 +50,13 @@ def to_midi(Gnumeric, fn, range_ref_or_cell):
     if 'RangeRef' in str(type(range_ref_or_cell)):
         MidiFileOut.write_Composition(fn, to_composition(u.from_range_ref(Gnumeric, range_ref_or_cell)))
     else:
-        MidiFileOut.write_Note(fn, from_scientific(range_ref_or_cell))
+        MidiFileOut.write_Note(fn, u.from_scientific(range_ref_or_cell))
 
 # Maybe separate it because it's dirty?
 from tempfile import mktemp
-from subprocess import call
+from subprocess import Popen
 def play(Gnumeric, range_ref_or_cell):
     fn = mktemp()
     to_midi(Gnumeric, fn, range_ref_or_cell)
-    call(['timidity', fn])
+#   Popen(['timidity', fn], stdout = subprocess.PIPE)
     os.remove(fn)

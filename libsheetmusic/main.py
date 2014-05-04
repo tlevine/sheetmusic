@@ -88,7 +88,7 @@ def gnumeric_functions():
         def to_midi(fn, range_ref_or_cell):
             return sm.to_midi(Gnumeric, fn, range_ref_or_cell)
         def play(range_ref_or_cell):
-            return return sm.play(Gnumeric, range_ref_or_cell)
+            return sm.play(Gnumeric, range_ref_or_cell)
 
     return {
         'progression': progression,

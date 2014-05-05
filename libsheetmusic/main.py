@@ -5,6 +5,11 @@ import libsheetmusic.spreadsheet as s
 import libsheetmusic.util as u
 import libsheetmusic.sheetmusic as sm
 
+def note_functions():
+    method_names = ['octave_up', 'octave_down']
+    template = 'lambda root: s.note_method("%s", root)'
+    return {method_name: eval(template % method_name) for method_name in method_names}
+
 def interval_functions():
     special = 'from_shorthand',
     maybe_useful = ['get_interval', 'measure', 'invert',]
@@ -116,4 +121,9 @@ def function_functions():
     return {'define': define, 'call': call}
 
 def functions():
-    return reduce(u.merge, [scale_functions(), chord_functions(), interval_functions(), util_functions(), gnumeric_functions(), function_functions()])
+    fs = [
+        note_functions, scale_functions, chord_functions,
+        interval_functions, util_functions,
+        gnumeric_functions, function_functions
+    ]
+    return reduce(u.merge, [f() for f in fs])

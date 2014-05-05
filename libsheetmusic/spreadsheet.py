@@ -22,3 +22,8 @@ def keyed_interval(func_name, string_note, key):
 
 def nonkeyed_interval(func_name, string_note):
     return u.to_scientific(m.nonkeyed_interval(func_name, u.from_scientific(string_note)))
+
+def note_method(method_name, string_note):
+    note = u.from_scientific(string_note)
+    getattr(note, method_name)()
+    return u.to_scientific(note)

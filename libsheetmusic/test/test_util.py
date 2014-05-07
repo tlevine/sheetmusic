@@ -37,3 +37,8 @@ def test_transpose():
     observed = util.transpose([[1,2,3],[4,5,6],[7,8,9]])
     expected = [(1,4,7),(2,5,8),(3,6,9)]
     n.assert_list_equal(observed, expected)
+
+def test_transpose_nones():
+    observed = util.transpose([[1,2,3],[4,None,None],[7,8,None]])
+    expected = [(1,4,7),(2,None,8),(3,None,None)]
+    n.assert_list_equal(observed, expected)

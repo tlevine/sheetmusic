@@ -11,9 +11,7 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4, header = Fa
     '''
     >>> sheetmusic(Gnumeric, range_ref, 'D', 2, 4, True):
     '''
-    print(u.range_apply(u.maybe_from_scientific, u.from_range_ref(Gnumeric, range_ref)))
     cells = u.transpose(u.range_apply(u.maybe_from_scientific, u.from_range_ref(Gnumeric, range_ref)))
-    print(cells)
     meter = (int(upper), int(lower))
     if header:
         next(cells) # Skip the header
@@ -23,12 +21,11 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4, header = Fa
         b = c.Bar(key = key, meter = meter)
         for _ in xrange(int(upper)):
             nc = c.NoteContainer()
-           #print(row)
             for note in row:
                 if note != None:
-                    nc + note
-            b + nc
-        t + b
+                    nc.add_note(note)
+            b.place_notes(nc, lower)
+        t.add_bar(b)
 
     lp = LilyPond.from_Track(t)
     return LilyPond.to_png(lp, '/tmp/track')

@@ -95,8 +95,6 @@ def gnumeric_functions():
 @GNM_FUNC_HELP_ARG@number2:The top number in the time signature ("3" for 3/4 time)
 @GNM_FUNC_HELP_ARG@number3:The bottom number in the time signature ("4" for 3/4 time)
 @GNM_FUNC_HELP_EXAMPLES@=SHEETMUSIC(A1:D20,"F","2","4",true)'''
-#           keys = ['key', 'upper', 'lower', 'header']
-#           kwargs = dict(zip(keys, args))
             return sm.sheetmusic(Gnumeric, range_ref, *args)
         def to_midi(fn, range_ref_or_cell):
             return sm.to_midi(Gnumeric, fn, range_ref_or_cell)

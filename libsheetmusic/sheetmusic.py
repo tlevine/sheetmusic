@@ -7,22 +7,26 @@ from mingus.midi import MidiFileOut
 
 import libsheetmusic.util as u
 
-def sheetmusic(Gnumeric, range_ref, key, upper, lower, header):
+def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4, header = False):
     '''
-    >>> sheetmusic(Gnumeric, range_ref, 'C', 4, 4, True):
+    >>> sheetmusic(Gnumeric, range_ref, 'D', 2, 4, True):
     '''
     cells = izip(*u.range_apply(u.maybe_from_scientific, u.from_range_ref(Gnumeric, range_ref)))
-
+    meter = (int(upper), int(lower))
     if header:
         next(cells) # Skip the header
 
     t = c.Track()
     for row in cells:
-        nc = c.NoteContainer()
-        for note in row:
-            if note != None:
-                nc + note
-        t + nc
+        b = c.Bar(key = key, meter = meter)
+        for _ in xrange(int(upper)):
+            nc = c.NoteContainer()
+            print(row)
+            for note in row:
+                if note != None:
+                    nc + note
+            b + nc
+        t + b
 
     lp = LilyPond.from_Track(t)
     return LilyPond.to_png(lp, '/tmp/track')

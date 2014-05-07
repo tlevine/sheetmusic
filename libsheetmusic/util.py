@@ -68,3 +68,6 @@ def from_range_ref(Gnumeric, range_ref):
         columns = [int(columns_list_or_float)]
 
     return [[sheet.cell_fetch(int(column-1), int(row-1)).get_rendered_text() for row in rows] for column in columns]
+
+def transpose(matrix):
+    return zip(*matrix)

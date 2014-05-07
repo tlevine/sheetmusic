@@ -7,7 +7,10 @@ from mingus.midi import MidiFileOut
 
 import libsheetmusic.util as u
 
-def sheetmusic(Gnumeric, range_ref, key = 'C', upper = 4, lower = 4, header = False):
+def sheetmusic(Gnumeric, range_ref, key, upper, lower, header):
+    '''
+    >>> sheetmusic(Gnumeric, range_ref, 'C', 4, 4, True):
+    '''
     cells = izip(*u.range_apply(u.maybe_from_scientific, u.from_range_ref(Gnumeric, range_ref)))
 
     if header:

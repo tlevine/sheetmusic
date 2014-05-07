@@ -20,7 +20,6 @@ def sheetmusic(Gnumeric, range_ref, key = 'C', upper = 4, lower = 4, header = Fa
             nc + note
         t + nc
 
-
     lp = LilyPond.from_Track(t)
     return LilyPond.to_png(lp, '/tmp/track')
 

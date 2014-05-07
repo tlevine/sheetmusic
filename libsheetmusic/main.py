@@ -91,9 +91,10 @@ def gnumeric_functions():
             return s.progression(Gnumeric, progression_range_ref, string_root_note)
         def sheetmusic(range_ref, *args):
             '''@GNM_FUNC_HELP_NAME@SHEETMUSIC:Print the notes to sheet music.
-@GNM_FUNC_HELP_ARG@number1:The key signature ("A","B","C",...)
-@GNM_FUNC_HELP_ARG@number2:The top number in the time signature ("3" for 3/4 time)
-@GNM_FUNC_HELP_ARG@number3:The bottom number in the time signature ("4" for 3/4 time)
+@GNM_FUNC_HELP_ARG@number1:The cells containing the notes
+@GNM_FUNC_HELP_ARG@number2:The key signature ("A","B","C",...)
+@GNM_FUNC_HELP_ARG@number3:The top number in the time signature ("3" for 3/4 time)
+@GNM_FUNC_HELP_ARG@number4:The bottom number in the time signature ("4" for 3/4 time)
 @GNM_FUNC_HELP_EXAMPLES@=SHEETMUSIC(A1:D20,"F","2","4",true)'''
             return sm.sheetmusic(Gnumeric, range_ref, *args)
         def to_midi(fn, range_ref_or_cell):

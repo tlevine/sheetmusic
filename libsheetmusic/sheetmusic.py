@@ -8,7 +8,7 @@ from mingus.midi import MidiFileOut
 import libsheetmusic.util as u
 
 def sheetmusic(Gnumeric, range_ref, key = 'C', upper = 4, lower = 4, header = False):
-    cells = izip(*u.range_apply(u.from_scientific, u.from_range_ref(Gnumeric, range_ref)))
+    cells = izip(*u.range_apply(u.maybe_from_scientific, u.from_range_ref(Gnumeric, range_ref)))
 
     if header:
         next(cells) # Skip the header
@@ -17,7 +17,8 @@ def sheetmusic(Gnumeric, range_ref, key = 'C', upper = 4, lower = 4, header = Fa
     for row in cells:
         nc = c.NoteContainer()
         for note in row:
-            nc + note
+            if note != None:
+                nc + note
         t + nc
 
     lp = LilyPond.from_Track(t)

@@ -39,6 +39,12 @@ def from_scientific(scientific_note):
     octave = int(m.group(2))
     return containers.Note(note_within_octave, octave)
 
+def maybe_from_scientific(scientific_note):
+    try:
+        return from_scientific(scientific_note)
+    except ValueError:
+        return None
+
 def to_scientific(integral_note):
     note = containers.Note(int(integral_note))
     return note.name + str(note.octave)

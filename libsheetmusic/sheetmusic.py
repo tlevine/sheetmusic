@@ -11,7 +11,7 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4, header = Fa
     '''
     >>> sheetmusic(Gnumeric, range_ref, 'D', 2, 4, True):
     '''
-    cells = izip(*u.range_apply(u.maybe_from_scientific, u.from_range_ref(Gnumeric, range_ref)))
+    cells = u.transpose(u.range_apply(u.maybe_from_scientific, u.from_range_ref(Gnumeric, range_ref)))
     meter = (int(upper), int(lower))
     if header:
         next(cells) # Skip the header

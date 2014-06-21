@@ -1,7 +1,5 @@
 from distutils.core import setup
 
-from libsheetmusic import __version__
-
 setup(name='sheetmusic',
       author='Thomas Levine',
       author_email='_@thomaslevine.com',
@@ -11,6 +9,6 @@ setup(name='sheetmusic',
       scripts=['bin/sheetmusic-installer'],
       install_requires = ['mingus', 'lxml'],
       tests_require = ['nose'],
-      version=__version__,
+      version='0.0.2',
       license='AGPL',
 )

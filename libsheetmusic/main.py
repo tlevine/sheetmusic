@@ -3,7 +3,6 @@ import itertools
 
 import libsheetmusic.spreadsheet as s
 import libsheetmusic.util as u
-import libsheetmusic.sheetmusic as sm
 
 def note_functions():
     method_names = ['octave_up', 'octave_down']
@@ -80,34 +79,14 @@ def gnumeric_functions():
     try:
         import Gnumeric
     except ImportError:
-        def f(*args, **kwargs):
+        def progression(*args, **kwargs):
             raise EnvironmentError('This must be run from inside Gnumeric.')
-        sheetmusic = f
-        progression = f
-        to_midi = f
-        play = f
     else:
         def progression(progression_range_ref, string_root_note):
             return s.progression(Gnumeric, progression_range_ref, string_root_note)
-        def sheetmusic(range_ref, *args):
-            '''@GNM_FUNC_HELP_NAME@SHEETMUSIC:Print the notes to sheet music.
-@GNM_FUNC_HELP_ARG@number1:The cells containing the notes
-@GNM_FUNC_HELP_ARG@number2:The key signature ("A","B","C",...)
-@GNM_FUNC_HELP_ARG@number3:The top number in the time signature ("3" for 3/4 time)
-@GNM_FUNC_HELP_ARG@number4:The bottom number in the time signature ("4" for 3/4 time)
-@GNM_FUNC_HELP_EXAMPLES@=SHEETMUSIC(A1:D20,"F","2","4",true)'''
-            return sm.sheetmusic(Gnumeric, range_ref, *args)
-        def to_midi(fn, range_ref_or_cell):
-            return sm.to_midi(Gnumeric, fn, range_ref_or_cell)
-        def play(range_ref_or_cell):
-            return sm.play(Gnumeric, range_ref_or_cell)
 
     return {
         'progression': progression,
-        'sheetmusic': sheetmusic,
-        'to_midi': to_midi,
-        'play': play,
-#       'loop': loop,
     }
 
 def util_functions():

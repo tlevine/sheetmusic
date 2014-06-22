@@ -54,18 +54,28 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4):
 
 def midi(Gnumeric, fn, range_string):
     'Convert the cells to MIDI.'
-    MidiFileOut.write_Track(fn, to_track(u.from_range_string(Gnumeric, range_string)))
+    top, left, bottom, right = u.from_range_string(Gnumeric, range_string)
+    MidiFileOut.write_Track(fn, to_track(u.rendered_text(Gnumeric, top, left, bottom, right)))
 
 def play(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Play the music in some cells.'
-    track = to_track(u.from_range_string(Gnumeric, range_string), key, upper, lower)
+    top, left, bottom, right = u.from_range_string(Gnumeric, range_string)
+    track = to_track(u.rendered_text(Gnumeric, top_left_bottom_right), key, upper, lower)
     fluidsynth.play_Track(track, bpm = bpm)
 
-def loop(Gnumeric, range_ref_or_cell, bpm = 120):
+def loop(Gnumeric, range_string, bpm = 120):
     'Loop the music in some cells.'
     raise NotImplementedError
-    return Sub(functools.partial(play, Gnumeric, range_ref_or_cell, bpm))
+    return Sub(functools.partial(play, Gnumeric, range_string, bpm))
 
 def init():
     sf = '/usr/share/soundfonts/Unison.sf2'
     fluidsynth.init(sf, 'alsa')
+
+def bold(Gnumeric, range_string, workbook = 0, sheet = 0):
+    top, left, bottom, right = u.from_range_string(range_string)
+    sheet = Gnumeric.workbooks()[workbook].sheets()[sheet]
+    range = Gnumeric.Range(top, left, bottom, right)
+    style = Gnumeric.GnmStyle()
+    style.set_font_bold(1)
+    sheet.style_apply_range(range, style)

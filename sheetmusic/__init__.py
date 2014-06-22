@@ -1,1 +1,1 @@
-from sheetmusic import play, loop, midi, sheetmusic
+from sheetmusic import play, loop, midi, sheetmusic, bold

@@ -3,8 +3,12 @@ README
 setup.py
 bin/sheetmusic-installer
 libsheetmusic/__init__.py
+libsheetmusic/console.py
+libsheetmusic/install.py
 libsheetmusic/main.py
 libsheetmusic/music.py
-libsheetmusic/output.py
+libsheetmusic/plugin_template.py
 libsheetmusic/spreadsheet.py
 libsheetmusic/util.py
+sheetmusic/__init__.py
+sheetmusic/sheetmusic.py

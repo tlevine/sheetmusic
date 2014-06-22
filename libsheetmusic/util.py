@@ -75,9 +75,11 @@ def transpose(matrix):
 
 def from_range_string(Gnumeric, range_string, workbook = 0, sheet = 1.0):
     def cell_string_to_pos(cell_string):
-        column = string.ascii_uppercase.index(cell_string.replace(string.digits, '').upper())
-        row = int(cell_string.replace(string.ascii_letters, ''))
+        column = string.ascii_uppercase.index(re.match('^([A-Z]).*', cell_string, flags = re.IGNORECASE).group(1).upper())
+        row = int(re.match(r'^[A-Z]+([0-9]+)$', cell_string, flags = re.IGNORECASE).group(1))
         return column, row
     (top, left), (bottom, right) = map(cell_string_to_pos, range_string.split(':'))
     sheet = Gnumeric.workbooks()[workbook].sheets()[int(sheet) - 1]
+    columns = range(left, right + 1)
+    rows = range(top, bottom + 1)
     return [[sheet.cell_fetch(column - 1, row - 1).get_rendered_text() for row in rows] for column in columns]

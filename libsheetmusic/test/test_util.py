@@ -20,6 +20,11 @@ def test_from_range_ref():
     observed = util.from_range_ref(MockGnumeric, MockGnumeric.RangeRef())
     expected = [[MockGnumeric.Cell._cell_text]*4]*6
 
+def test_from_rendered_text():
+    import libsheetmusic.test.MockGnumeric as MockGnumeric
+    observed = util.show_rendered_text(MockGnumeric, 0, 0, 1, 1)
+    expected = [[MockGnumeric.Cell._cell_text]*2]*2
+
 def test_range_apply():
     original = [[1,2],[3,4],[5,6]]
     observed = util.range_apply(lambda x:x*10, original)

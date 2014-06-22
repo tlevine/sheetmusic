@@ -85,4 +85,5 @@ def rendered_text(Gnumeric, top, left, bottom, right, workbook = 0, sheet = 1.0)
     sheet = Gnumeric.workbooks()[workbook].sheets()[int(sheet) - 1]
     columns = range(left, right + 1)
     rows = range(top, bottom + 1)
-    return [[sheet.cell_fetch(column - 1, row - 1).get_rendered_text() for row in rows] for column in columns]
+    print(columns, rows)
+    return [[sheet.cell_fetch(column, row).get_rendered_text() for row in rows] for column in columns]

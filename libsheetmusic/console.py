@@ -56,13 +56,16 @@ def midi(Gnumeric, fn, range_string):
     'Convert the cells to MIDI.'
     MidiFileOut.write_Track(fn, to_track(u.from_range_string(Gnumeric, range_string)))
 
-sf = '/usr/share/soundfonts/Unison.sf2'
-fluidsynth.init(sf, 'alsa')
-def play(Gnumeric, range_string, bpm = 120):
+def play(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Play the music in some cells.'
-    fluidsynth.play_Track(to_track(u.from_range_string(Gnumeric, range_string), bpm = bpm))
+    track = to_track(u.from_range_string(Gnumeric, range_string), key, upper, lower)
+    fluidsynth.play_Track(track, bpm = bpm)
 
 def loop(Gnumeric, range_ref_or_cell, bpm = 120):
     'Loop the music in some cells.'
     raise NotImplementedError
     return Sub(functools.partial(play, Gnumeric, range_ref_or_cell, bpm))
+
+def init():
+    sf = '/usr/share/soundfonts/Unison.sf2'
+    fluidsynth.init(sf, 'alsa')

@@ -1,0 +1,241 @@
+>>> import Gnumeric
+>>> dir(Gnumeric)
+['Boolean', 'CellPos', 'FALSE', 'GnmStyle', 'GnumericError', 'GnumericErrorDIV0', 'GnumericErrorNA', 'GnumericErrorNAME', 'GnumericErrorNULL', 'GnumericErrorNUM', 'GnumericErrorREF', 'GnumericErrorVALUE', 'Range', 'TRUE', '__doc__', '__name__', '__package__', 'functions', 'plugin_info', 'workbook_new', 'workbooks']
+>>> Gnumeric.Range
+<built-in function Range>
+>>> help(Gnumeric.Range)
+Help on built-in function Range in module Gnumeric:
+
+Range(...)
+
+>>> dir(Gnumeric.Range)
+['__call__', '__class__', '__cmp__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__name__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__self__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+>>> Gnumeric.Range('A1:B3')
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: Range() takes exactly 2 arguments (1 given)
+>>> Gnumeric.Range('A1', 'B3')
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: must be CellPos, not str
+>>> Gnumeric.Range(Gnumeric.CellPos('A1'), Gnumeric.CellPos('B3'))
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: CellPos() takes exactly 2 arguments (1 given)
+>>> Gnumeric.Range(Gnumeric.CellPos('A', '1'), Gnumeric.CellPos('B', '3'))
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: an integer is required
+>>> Gnumeric.CellPos
+<built-in function CellPos>
+>>> help(Gnumeric.CellPos)
+Help on built-in function CellPos in module Gnumeric:
+
+CellPos(...)
+
+>>> Gnumeric.CellPos(0.3)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: CellPos() takes exactly 2 arguments (1 given)
+>>> Gnumeric.CellPos(0,3)
+<CellPos object at 0x7f340ea27168>
+>>> help(Gnumeric.CellPos(0,3))
+Help on CellPos object:
+
+class CellPos(object)
+ |  Methods defined here:
+ |  
+ |  __str__(...)
+ |      x.__str__() <==> str(x)
+
+>>> dir(Gnumeric.CellPos(0,3))
+['get_tuple']
+>>> Gnumeric.CellPos(0,3).get_tuple()
+(0, 3)
+>>> str(Gnumeric.CellPos(0,3))
+'A4'
+>>> dir(Gnumeric)
+['Boolean', 'CellPos', 'FALSE', 'GnmStyle', 'GnumericError', 'GnumericErrorDIV0', 'GnumericErrorNA', 'GnumericErrorNAME', 'GnumericErrorNULL', 'GnumericErrorNUM', 'GnumericErrorREF', 'GnumericErrorVALUE', 'Range', 'TRUE', '__doc__', '__name__', '__package__', 'functions', 'plugin_info', 'workbook_new', 'workbooks']
+>>> Gnumeric.functions
+<GnumericFuncDict object at 0x7f340ea270a8>
+>>> Gnumeric.functions.keys()
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AttributeError: 'GnumericFuncDict' object has no attribute 'keys'
+>>> dir(Gnumeric.functions)
+[]
+>>> Gnumeric.functions
+<GnumericFuncDict object at 0x7f340ea270a8>
+>>> str(Gnumeric.CellPos('A',3))
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: an integer is required
+>>> Gnumeric.CellPos('A',3)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: an integer is required
+>>> Gnumeric.CellPos(0,3)
+<CellPos object at 0x7f340ea27168>
+>>> Gnumeric.Range(Gnumeric.CellPos(0,3), Gnumeric.CellPos(3, 8))
+<Range object at 0x7f340ea28170>
+>>> r = Gnumeric.Range(Gnumeric.CellPos(0,3), Gnumeric.CellPos(3, 8))
+>>> dir(r)
+['get_tuple']
+>>> r.get_tuple()
+(0, 3, 3, 8)
+>>> Gnumeric.GnmStyle
+<built-in function GnmStyle>
+>>> help(Gnumeric.GnmStyle)
+Help on built-in function GnmStyle in module Gnumeric:
+
+GnmStyle(...)
+
+>>> dir(Gnumeric.GnmStyle)
+['__call__', '__class__', '__cmp__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__name__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__self__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+>>> dir(Gnumeric)
+['Boolean', 'CellPos', 'FALSE', 'GnmStyle', 'GnumericError', 'GnumericErrorDIV0', 'GnumericErrorNA', 'GnumericErrorNAME', 'GnumericErrorNULL', 'GnumericErrorNUM', 'GnumericErrorREF', 'GnumericErrorVALUE', 'Range', 'TRUE', '__doc__', '__name__', '__package__', 'functions', 'plugin_info', 'workbook_new', 'workbooks']
+>>> Gnumeric.functions['sheet'](1)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+Gnumeric.GnumericError: Missing Evaluation Position.
+>>> Gnumeric.workbooks()
+(<Workbook object at 0x7f340ea27228>,)
+>>> Gnumeric.workbooks()[0]
+<Workbook object at 0x7f340ea27240>
+>>> Gnumeric.workbooks()[0].sheets()
+(<Sheet object at 0x7f340ea27258>, <Sheet object at 0x7f340ea27270>, <Sheet object at 0x7f340ea27288>)
+>>> Gnumeric.workbooks()[0].sheets()[0]
+<Sheet object at 0x7f340ea27228>
+>>> sheet = Gnumeric.workbooks()[0].sheets()[0]
+>>> sheet.cell_fetch(3,4)
+<Cell object at 0x7f340ea27288>
+>>> 
+>>> sheet.cell_fetch('A',,4)
+  File "<string>", line 1
+    sheet.cell_fetch('A',,4)
+                         ^
+SyntaxError: invalid syntax
+>>> sheet.cell_fetch('A',4)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: an integer is required
+>>> sheet.cell_fetch(2,4)
+<Cell object at 0x7f340ea27228>
+>>> cell = sheet.cell_fetch(2,4)
+>>> dir(cell)
+['get_entered_text', 'get_rendered_text', 'get_style', 'get_value', 'get_value_as_string', 'set_text']
+>>> cell.get_style()
+<GnmStyle object at 0x7f340ea282f0>
+>>> s = cell.get_style()
+>>> dir(s)
+['get_font_bold', 'get_font_italic', 'get_font_size', 'get_font_strike', 'get_wrap_text', 'set_font_bold', 'set_font_italic', 'set_font_size', 'set_font_strike', 'set_wrap_text']
+>>> cell
+<Cell object at 0x7f340ea27288>
+>>> cell.set_text('aoeu')
+>>> dir(s)
+['get_font_bold', 'get_font_italic', 'get_font_size', 'get_font_strike', 'get_wrap_text', 'set_font_bold', 'set_font_italic', 'set_font_size', 'set_font_strike', 'set_wrap_text']
+>>> s.set_font_size(33)
+>>> s.get_font_size()
+33.0
+>>> cell.set_style(s)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AttributeError: set_style
+>>> cell
+<Cell object at 0x7f340ea27288>
+>>> dir(cell)
+['get_entered_text', 'get_rendered_text', 'get_style', 'get_value', 'get_value_as_string', 'set_text']
+>>> cell.get_text()
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AttributeError: get_text
+>>> cell.get_value()
+'aoeu'
+>>> cell.style
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AttributeError: style
+>>> dir(s)
+['get_font_bold', 'get_font_italic', 'get_font_size', 'get_font_strike', 'get_wrap_text', 'set_font_bold', 'set_font_italic', 'set_font_size', 'set_font_strike', 'set_wrap_text']
+>>> help(s)
+Help on GnmStyle object:
+
+class GnmStyle(object)
+
+>>> help(s.set_font_italic)
+Help on built-in function set_font_italic:
+
+set_font_italic(...)
+
+>>> cell
+<Cell object at 0x7f340ea27288>
+>>> dir(sheet)
+['cell_fetch', 'get_extent', 'get_name_unquoted', 'rename', 'style_apply_range', 'style_get', 'style_set_pos', 'style_set_range']
+>>> help(sheet.style_set_pos)
+Help on built-in function style_set_pos:
+
+style_set_pos(...)
+
+>>> sheet.style_set_pos(0.3)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: style_set_pos() takes exactly 2 arguments (1 given)
+>>> sheet.style_set_pos(0,3)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: must be CellPos, not int
+>>> sheet.style_set_pos(Gnumeric.CellPos(2,2))
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: style_set_pos() takes exactly 2 arguments (1 given)
+>>> sheet.style_set_pos(Gnumeric.CellPos(2,2), s)
+>>> s
+<GnmStyle object at 0x7f340ea28310>
+>>> s.get_font_size()
+33.0
+>>> sheet.style_set_pos(Gnumeric.CellPos(2,2), s)
+>>> sheet.style_set_pos(Gnumeric.CellPos(2,2), s)
+>>> sheet.style_set_pos(Gnumeric.CellPos(1,1), s)
+>>> sheet
+<Sheet object at 0x7f340ea27270>
+>>> dir(sheet)
+['cell_fetch', 'get_extent', 'get_name_unquoted', 'rename', 'style_apply_range', 'style_get', 'style_set_pos', 'style_set_range']
+>>> sheet.style_get(Gnumeric.CellPos(2,2))
+<GnmStyle object at 0x7f340ea282f0>
+>>> dir(sheet.style_get(Gnumeric.CellPos(2,2)))
+['get_font_bold', 'get_font_italic', 'get_font_size', 'get_font_strike', 'get_wrap_text', 'set_font_bold', 'set_font_italic', 'set_font_size', 'set_font_strike', 'set_wrap_text']
+>>> sheet.style_get(Gnumeric.CellPos(2,2)).get_font_bold()
+0
+>>> sheet.style_get(Gnumeric.CellPos(2,2)).get_font_bold()
+1
+>>> sheet.style_get(Gnumeric.CellPos(2,2)).set_font_bold()
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: set_font_bold() takes exactly 1 argument (0 given)
+>>> sheet.style_get(Gnumeric.CellPos(2,2)).set_font_bold(1)
+>>> sheet.style_get(Gnumeric.CellPos(2,2)).set_font_bold(10)
+>>> sheet.style_get(Gnumeric.CellPos(2,2)).set_font_bold(0)
+>>> style = sheet.style_get(Gnumeric.CellPos(2,2)).set_font_bold(0)
+>>> sheet.style_set_pos(Gnumeric.CellPos(2,2), style)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: must be GnmStyle, not None
+>>> style
+>>> dir(sheet.style_get(Gnumeric.CellPos(2,2)))
+['get_font_bold', 'get_font_italic', 'get_font_size', 'get_font_strike', 'get_wrap_text', 'set_font_bold', 'set_font_italic', 'set_font_size', 'set_font_strike', 'set_wrap_text']
+>>> style = sheet.style_get(Gnumeric.CellPos(2,2))
+>>> sheet.style_set_pos(Gnumeric.CellPos(2,2), style)
+>>> dir(sheet)
+['cell_fetch', 'get_extent', 'get_name_unquoted', 'rename', 'style_apply_range', 'style_get', 'style_set_pos', 'style_set_range']
+>>> sheet.style_apply_range(Gnumeric.CellPos(2,2), style)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: must be Range, not CellPos
+>>> sheet.style_apply_range(range, style)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: must be Range, not builtin_function_or_method
+>>> cellpos = Gnumeric.CellPos(2,2)
+>>> range = Gnumeric.Range(cellpos, cellpos)
+>>> sheet.style_apply_range(range, style)
+>>> 

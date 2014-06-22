@@ -48,22 +48,17 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4, header = Fa
     lp = LilyPond.from_Track(t)
     return LilyPond.to_png(lp, '/tmp/track')
 
-def midi(Gnumeric, fn, ):
+def midi(Gnumeric, fn, range_string):
     'Convert the cells to MIDI.'
-    if 'RangeRef' in str(type(range_ref_or_cell)):
-        MidiFileOut.write_Composition(fn, to_composition(u.from_range_ref(Gnumeric, range_ref_or_cell)))
-    else:
-        MidiFileOut.write_Note(fn, u.from_scientific(range_ref_or_cell))
+    MidiFileOut.write_Composition(fn, to_composition(u.from_range_string(Gnumeric, range_string)))
 
 sf = '/usr/share/soundfonts/Unison.sf2'
 fluidsynth.init(sf, 'alsa')
-def play(Gnumeric, range_ref_or_cell, bpm = 120):
+def play(Gnumeric, range_string, bpm = 120):
     'Play the music in some cells.'
-    if 'RangeRef' in str(type(range_ref_or_cell)):
-        fluidsynth.play_Composition(u.from_range_ref(Gnumeric, range_ref_or_cell), bpm = bpm)
-    else:
-        fluidsynth.play_Note(u.from_scientific(range_ref_or_cell), velocity = bpm)
+    fluidsynth.play_Composition(u.from_range_string(Gnumeric, range_string), bpm = bpm)
 
 def loop(Gnumeric, range_ref_or_cell, bpm = 120):
     'Loop the music in some cells.'
+    raise NotImplementedError
     return Sub(functools.partial(play, Gnumeric, range_ref_or_cell, bpm))

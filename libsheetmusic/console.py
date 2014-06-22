@@ -79,3 +79,14 @@ def bold(Gnumeric, range_string, workbook = 0, sheet = 0):
     style = Gnumeric.GnmStyle()
     style.set_font_bold(1)
     sheet.style_apply_range(range, style)
+
+def show_track(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
+    'Play the music in some cells.'
+    top, left, bottom, right = u.from_range_string(range_string)
+    track = to_track(u.rendered_text(Gnumeric, top, left, bottom, right), key, upper, lower)
+    return track
+
+def show_rendered_text(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
+    'Play the music in some cells.'
+    top, left, bottom, right = u.from_range_string(range_string)
+    return u.rendered_text(Gnumeric, top, left, bottom, right)

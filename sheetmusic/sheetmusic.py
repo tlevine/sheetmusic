@@ -10,3 +10,5 @@ midi = partial(c.midi, Gnumeric)
 sheetmusic = partial(c.sheetmusic, Gnumeric)
 bold = partial(c.bold, Gnumeric)
 init = c.init
+show_track = partial(c.show_track, Gnumeric)
+show_rendered_text = partial(c.show_rendered_text, Gnumeric)

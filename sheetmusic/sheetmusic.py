@@ -9,3 +9,4 @@ loop = partial(c.loop, Gnumeric)
 midi = partial(c.midi, Gnumeric)
 sheetmusic = partial(c.sheetmusic, Gnumeric)
 bold = partial(c.bold, Gnumeric)
+init = c.init

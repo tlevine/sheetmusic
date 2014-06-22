@@ -54,13 +54,13 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4):
 
 def midi(Gnumeric, fn, range_string):
     'Convert the cells to MIDI.'
-    top, left, bottom, right = u.from_range_string(Gnumeric, range_string)
+    top, left, bottom, right = u.from_range_string(range_string)
     MidiFileOut.write_Track(fn, to_track(u.rendered_text(Gnumeric, top, left, bottom, right)))
 
 def play(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Play the music in some cells.'
-    top, left, bottom, right = u.from_range_string(Gnumeric, range_string)
-    track = to_track(u.rendered_text(Gnumeric, top_left_bottom_right), key, upper, lower)
+    top, left, bottom, right = u.from_range_string(range_string)
+    track = to_track(u.rendered_text(Gnumeric, top, left, bottom, right), key, upper, lower)
     fluidsynth.play_Track(track, bpm = bpm)
 
 def loop(Gnumeric, range_string, bpm = 120):

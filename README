@@ -1,239 +1,13 @@
-(data table slide)
-
-The [data table](http://www.datakind.org/blog/whats-in-a-table/)
-is an intuitive paradigm for many people. In a tidy data table, rows
-correspond to observations/records, and columns to variables/attributes
-collected about each observation/record.
-
-(data table in a spreadsheet slide)
-
-We can use spreadsheets to represent data tables, and we can use
-data tables to represent musical scores.
-
-(spreadsheet versus ordinary sheet music slide)
-
-In this figure we see music represented in two forms.
-
-(spreadsheet versus ordinary sheet music slide, with column/staff highlighted)
-
-Each column in the spreadsheet corresponds to a staff in the sheet music,
-
-(spreadsheet versus ordinary sheet music slide, with row/beat highlighted)
-
-and each row in the spreadsheet corresponds to a beat.
-
-(spreadsheet versus ordinary sheet music slide, with styles for dynamics)
-
-We can use color to represent dynamics (how loud or soft the sound is).
-
-(spreadsheet versus ordinary sheet music slide, with borders for bars)
-
-Music is often divided into measures. In sheet music, this is typically
-represented with bars, and we can do the same in spreadsheets.
-
-(Slide: ddpy.to_midi(df), with a diagram of all of the translations)
-
-Spreadsheets store data, so we can use them just as we can use any data
-table format.
-
-(Slide: synthesizer functions)
-
-Spreadsheets are also code, so we can use them to make music.
-I wrote a package that lets you use a spreadsheet as a music synthesizer.
-
-("pip2 install sheetmusic")
-
-To be confusing, let's call it "SheetMusic".
-
-% Explain, functions, examples
-
-I find that people are overly constrained in their perception of what
-different software tools can do.
-
-> Some data analysis tools
->
-> **Spreadsheet** (Gnumeric
-> **R**: ddr
-> **Python (pandas)**: ddpy, numpy
-> **Relational databases: PostgreSQL, SQL Server, MySQL, SQLite
-
-In particular, people think of things
-like spreadsheets as specialized data analysis software even though they
-function as generalized application programming languages.
-
-(csvsoundsystem picture)
-
-My colleagues at csv soundsystem and I have written music synthesizers
-for several data analysis programs.
-
-> Music synthesizers for data analysis programs
->
-> **Spreadsheet** (Gnumeric): sheetmusic
-> **R**: ddr
-> **Python (pandas)**: ddpy
-> Next stop: **PostgreSQL**?
-
-The basic paradigm is to represent musical scores in data structures that
-are designed for storing data tables.
-
-(ddr slide)
-
-In R, this is the `data.frame`.
-
-(ddpy slide)
-
-In pandas (Python), this is the `DataFrame`.
-
-(quote the reddit comment about how we're economists who don't know anything else)
-
-Here's what someone on reddit had to say about one of our music videos.
-I like to represent music as data tables because I'm very used to thinking
-about data tables, but it turns out that other nice things happen when we
-use data analysis software to make music.
-
-(slide with fms symphony)
-
-The most obvious thing is that it lets us make music from empirical data.
-Here's a music video about the finances of the United States government.
-(Explain what's in the video.)
-
-We wrote this music video in R.
-
-(slide with a stereotypical picture: What isn't data analysis?)
-
-When we start using data analysis software for other things,
-we also blur the line between data analysis and other things.
-Data analysis seems very magical to many people. When we represent
-data as familiar things like music, the analysis becomes more
-accessible.
-
-% slide with abstract data versus concrete guacamole
-
-Numbers are abstract, theoretical things that don't have to be
-related to the world.
-
-% slide with conversions between data and guacamole
-
-When I say that data things are "magical" to people, I mean that
-people don't recognize that we can convert between these abstract
-numbers and this real world. When I explain the conversion in
-excruciating detail, it makes perfect sense to people.
-
-% Wetlands thing to spreadsheet
-
-I'm apparently pretty good at converting data formats. By that,
-I mean converting scans of photocopies of non-standard notifications
-that someone wants to dredge or fill a wetland.
-If I say that the computer is going to read the image and
-figure out what the data table says, it can sound like the computer is doing
-something very fancy that you couldn't possibly understand.
-
-(slide)
-
-Instead, I can say that the computer is approximately doing the following.
-
-1. separating the image into a million dots, with most of the dots white
-    and some of them black
-2. doing the same with all of the letters of the alphabet, using a typeface
-    that I specified to be similar to the one in the document
-3. aligning the letters to find things that match
-4. coming up with a long series of letters for the whole file based on the
-    above process
-5. looking through that series of letters until it finds the word
-    "LOCATION", in capital letters
-6. looking at all of the letters within about 100 letters of that word
-7. looking for some digits separated by a comma
-8. calling those digits the longitude and latitude
-
-When I do this, it's almost kind of boring and obvious.
-
-% a fancy-looking plot
-
-The same goes for conversions in the other direction. This plot
-might look very fancy, but we can decompose it into a bunch of simple
-components.
-
-* Each dot is a XXX
-* The distance from the bottom is how YYY the XXX is.
-* The distance from the right is how YYY the XXX is.
-* The size of the dot is XXX
-* The lines connect XXXs of the same YYY.
-* ...
-
-This is still a bit scary for some people, but I find that it gets less
-scary when we create more tangible outputs.
-
-% Mention "aesthetics" and "elements"
-
-As XXX thinks about graphics, we convert our abstract data into primitive
-graphical elements through a mapping that he calls "aesthetics".
-
-% Grammar of graphics slide quoting the non-visual aesthetics bit
-
-There's no reason that these elements have to be graphical! To convert
-data into music or food, we just need to come up with parametrized primitive
-musical or gastronomical elements. When we produce data-driven music or food,
-we are simply using a more accessible plotting device to map abstract data
-onto real things that we can perceive.
-
-
-
-...
-
-
-> **Summary**
-> 
-> * Convert the world to tidy data tables.
-> * Convert tidy data tables back to the world.
-> * These conversions are less magical than we make them seem.
-> * Data analysis software does a lot more than that.
-> * So we make music from spreadsheets.
-
-* We can represent lots of things as tidy data tables.
-* We convert abstract data tables into concrete things.
-* None of this stuff is magic, and anyone can understand it if we just explain it.
-* We can blur the boundary between data analysis software and everything else.
-* And thus we make music from spreadsheets.
-
-
-
-
-
-
-
-
-
-
-
 ## Weird features
 Darker text produces louder notes.
 
 ## Bars
-If you set the time signature (meter), there will be as many
-notes in a bar as the first number, and each note will be the
-length specified by the (inverse of the) second number.
-
-If you set no time signature, horizontal borders will be used
-as the breaks between bars.
-
-You can also set just the second number of the meter
-to indicate the length of a cell; if you don't set it,
-the default of 4 (quarter note) will be used.
+Sheetmusic ignores borders, but I recommend that you place
+horizontal borders where you would place bars in ordinary
+sheet music.
 
 ## Slurred and tied notes
-Sheetmusic produces pure sounds; within a spreadsheet cell,
-there is no variation in pitch or dynamic. Thus, the concept
-of slurred and tied notes is unnecessary. That is, two tied
-or slurred notes sound the same as two not-slurred notes.
-
-(add examples with normal sheet music)
-
-You can create an effect like slurred and tied notes by
-breaking your song into more rows and introducing variation.
-For example, break your song into thirty-second notes instead
-of quarter notes, and make the first thirty-second note a bit
-louder; this will be like you're pressing down on a piano key
-anew rather than holding it down.
+???
 
 ## Glissando
 Create a glissando effect by setting the cells of interest to the
@@ -245,6 +19,7 @@ Helpful links
 
 * http://www.ha19.no/gnumeric/
 * http://www.hep.by/gnu/gnumeric/sect-extending-python-writing.shtml
+* https://help.gnome.org/users/gnumeric/stable/sect-extending-python.html.en
 
 This requires Python 2 because mingus requires Python 2.
 
@@ -254,12 +29,9 @@ This requires Python 2 because mingus requires Python 2.
 ## Installing
 Install lilypond, fluidsynth, gnumeric, maybe something else. Then
 
-    make install
+    pip2 install sheetmusic
+    sheetmusic-installer
 
 ## To do
 
-* Separate stuff into a separate package that doesn't depend on Gnumeric;
-    this way, it'll be easier to test.
-* Mock the Gnumeric module for testing and whatnot
 * Anonymous functions `call(string_function, *args)`
-* `=play`, `=loop`, `=sheetmusic`

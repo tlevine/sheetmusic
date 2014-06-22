@@ -20,15 +20,13 @@ class Sub:
     def stop(self):
         self.queue.put(9839232)
 
-def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4, header = False):
+def to_track(range_values, key, upper, lower):
     '''
     Convert the cells to sheet music.
-    >>> sheetmusic(Gnumeric, range_ref, 'D', 2, 4, True)
+    >>> sheetmusic([['C3', 'C3'], ['E3', 'E3'], ['G3', 'G3'], ['C4', G4'], 'C', 2, 4, True)
     '''
-    cells = u.transpose(u.range_apply(u.maybe_from_scientific, u.from_range_ref(Gnumeric, range_ref)))
+    cells = u.transpose(u.range_apply(u.maybe_from_scientific, range_values))
     meter = (int(upper), int(lower))
-    if header:
-        next(cells) # Skip the header
 
     t = c.Track()
     b = c.Bar(key = key, meter = meter)
@@ -44,7 +42,13 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4, header = Fa
     while b.current_beat != 0.0 and (not b.is_full()):
         b.place_rest(lower)
     t.add_bar(b)
+    return t
 
+def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4):
+    '''
+    Convert the cells to sheet music.
+    '''
+    t = to_track(u.from_range_ref(Gnumeric, range_ref), key, upper, lower)
     lp = LilyPond.from_Track(t)
     return LilyPond.to_png(lp, '/tmp/track')
 

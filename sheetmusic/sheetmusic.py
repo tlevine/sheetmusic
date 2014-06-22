@@ -15,3 +15,4 @@ else:
     init = c.init
     show_track = partial(c.show_track, Gnumeric)
     show_rendered_text = partial(c.show_rendered_text, Gnumeric)
+    show_range_coords = partial(c.show_range_coords, Gnumeric)

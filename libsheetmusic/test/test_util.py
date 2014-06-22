@@ -47,3 +47,17 @@ def test_transpose_nones():
     observed = util.transpose([[1,2,3],[4,None,None],[7,8,None]])
     expected = [(1,4,7),(2,None,8),(3,None,None)]
     n.assert_list_equal(observed, expected)
+
+def check_from_range_string(range_string, expectation):
+    observation = util.from_range_string(range_string)
+    n.assert_tuple_equal(observation, expectation)
+
+def test_from_range_string():
+    testcases = [
+        ('A1:A1', (0, 0, 0, 0)),
+        ('A1:A2', (0, 0, 0, 1)),
+        ('B1:B2', (1, 0, 1, 1)),
+        ('A1:E14', (0, 0, 4, 13)),
+    ]
+    for range_string, expectation in testcases:
+        yield check_from_range_string, range_string, expectation

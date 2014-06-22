@@ -54,13 +54,13 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4):
 
 def midi(Gnumeric, fn, range_string):
     'Convert the cells to MIDI.'
-    MidiFileOut.write_(fn, to_composition(u.from_range_string(Gnumeric, range_string)))
+    MidiFileOut.write_Track(fn, to_track(u.from_range_string(Gnumeric, range_string)))
 
 sf = '/usr/share/soundfonts/Unison.sf2'
 fluidsynth.init(sf, 'alsa')
 def play(Gnumeric, range_string, bpm = 120):
     'Play the music in some cells.'
-    fluidsynth.play_Track(u.from_range_string(Gnumeric, range_string), bpm = bpm)
+    fluidsynth.play_Track(to_track(u.from_range_string(Gnumeric, range_string), bpm = bpm))
 
 def loop(Gnumeric, range_ref_or_cell, bpm = 120):
     'Loop the music in some cells.'

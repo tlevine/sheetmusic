@@ -22,7 +22,7 @@ def test_from_range_ref():
 
 def test_from_rendered_text():
     import libsheetmusic.test.MockGnumeric as MockGnumeric
-    observed = util.show_rendered_text(MockGnumeric, 0, 0, 1, 1)
+    observed = util.rendered_text(MockGnumeric, 0, 0, 1, 1)
     expected = [[MockGnumeric.Cell._cell_text]*2]*2
 
 def test_range_apply():

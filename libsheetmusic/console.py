@@ -23,7 +23,7 @@ class Sub:
 def to_track(range_values, key, upper, lower):
     '''
     Convert the cells to sheet music.
-    >>> sheetmusic([['C3', 'C3'], ['E3', 'E3'], ['G3', 'G3'], ['C4', G4'], 'C', 2, 4, True)
+    >>> to_track([['C3', 'C3'], ['E3', 'E3'], ['G3', 'G3'], ['C4', 'G4']], 'C', 2, 4)
     '''
     cells = u.transpose(u.range_apply(u.maybe_from_scientific, range_values))
     meter = (int(upper), int(lower))
@@ -54,13 +54,13 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4):
 
 def midi(Gnumeric, fn, range_string):
     'Convert the cells to MIDI.'
-    MidiFileOut.write_Composition(fn, to_composition(u.from_range_string(Gnumeric, range_string)))
+    MidiFileOut.write_(fn, to_composition(u.from_range_string(Gnumeric, range_string)))
 
 sf = '/usr/share/soundfonts/Unison.sf2'
 fluidsynth.init(sf, 'alsa')
 def play(Gnumeric, range_string, bpm = 120):
     'Play the music in some cells.'
-    fluidsynth.play_Composition(u.from_range_string(Gnumeric, range_string), bpm = bpm)
+    fluidsynth.play_Track(u.from_range_string(Gnumeric, range_string), bpm = bpm)
 
 def loop(Gnumeric, range_ref_or_cell, bpm = 120):
     'Loop the music in some cells.'

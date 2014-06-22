@@ -79,7 +79,7 @@ def from_range_string(range_string):
         row = int(re.match(r'^[A-Z]+([0-9]+)$', cell_string, flags = re.IGNORECASE).group(1))
         return column, row
     (top, left), (bottom, right) = map(cell_string_to_pos, range_string.split(':'))
-    return top, left, bottom, right
+    return top, left - 1, bottom, right - 1
 
 def rendered_text(Gnumeric, top, left, bottom, right, workbook = 0, sheet = 1.0):
     sheet = Gnumeric.workbooks()[workbook].sheets()[int(sheet) - 1]

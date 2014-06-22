@@ -63,15 +63,15 @@ def play(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     track = to_track(u.rendered_text(Gnumeric, top, left, bottom, right), key, upper, lower)
     fluidsynth.play_Track(track, bpm = bpm)
 
-def loop(Gnumeric, range_string, bpm = 120):
+def loop(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Loop the music in some cells.'
-    raise NotImplementedError
-    return Sub(functools.partial(play, Gnumeric, range_string, bpm))
+    return Sub(functools.partial(play, Gnumeric, range_string, key, upper, lower, bpm))
 
 def init():
     sf = '/usr/share/soundfonts/Unison.sf2'
     fluidsynth.init(sf, 'alsa')
 
+'''
 def bold(Gnumeric, range_string, workbook = 0, sheet = 0):
     top, left, bottom, right = u.from_range_string(range_string)
     sheet = Gnumeric.workbooks()[workbook].sheets()[sheet]
@@ -90,3 +90,4 @@ def show_rendered_text(Gnumeric, range_string, key = "C", upper = 4, lower = 4, 
     'Play the music in some cells.'
     top, left, bottom, right = u.from_range_string(range_string)
     return u.rendered_text(Gnumeric, top, left, bottom, right)
+'''

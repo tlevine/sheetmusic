@@ -20,6 +20,7 @@ Helpful links
 * http://www.ha19.no/gnumeric/
 * http://www.hep.by/gnu/gnumeric/sect-extending-python-writing.shtml
 * https://help.gnome.org/users/gnumeric/stable/sect-extending-python.html.en
+* http://www.bruunisejs.dk/PythonHacks/rstFiles/500%20Notes%20on%20spreadsheets%20etc.html
 
 This requires Python 2 because mingus requires Python 2.
 

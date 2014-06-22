@@ -48,7 +48,7 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4, header = Fa
     lp = LilyPond.from_Track(t)
     return LilyPond.to_png(lp, '/tmp/track')
 
-def midi(Gnumeric, fn, range_ref_or_cell):
+def midi(Gnumeric, fn, ):
     'Convert the cells to MIDI.'
     if 'RangeRef' in str(type(range_ref_or_cell)):
         MidiFileOut.write_Composition(fn, to_composition(u.from_range_ref(Gnumeric, range_ref_or_cell)))

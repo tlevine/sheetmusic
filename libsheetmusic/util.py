@@ -1,4 +1,5 @@
 import re
+import string
 
 import mingus.containers as containers
 
@@ -71,3 +72,12 @@ def from_range_ref(Gnumeric, range_ref):
 
 def transpose(matrix):
     return zip(*matrix)
+
+def from_range_string(Gnumeric, range_string, workbook = 0, sheet = 1.0):
+    topleft, bottomright = range_string.split(':')
+    def cell_string_to_pos(cell_string):
+        column = string.ascii_uppercase.index(cell_string.replace(string.digits, '').upper())
+        row = int(cell_string.replace(string.ascii_letters, ''))
+        return column, row
+        
+, workbook = 0, sheet = 1.0

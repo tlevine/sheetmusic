@@ -70,6 +70,7 @@ def loop(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
 def init():
     sf = '/usr/share/soundfonts/Unison.sf2'
     fluidsynth.init(sf, 'alsa')
+    fluidsynth.play_Note(c.Note('A'))
 
 '''
 def bold(Gnumeric, range_string, workbook = 0, sheet = 0):

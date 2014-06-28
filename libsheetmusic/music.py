@@ -18,12 +18,10 @@ def arpeggio(*args, **kwargs):
 
 def progression(the_progression, root_note):
     '''
-    >>> progression(['I','IV','V'], 'C3')
+    >>> progression(['I, IV, V'], 'C3')
     [['C3', 'E3', 'G3'], ['F3', 'A4', 'C4'], ['G3', 'B4', 'D4']]
     '''
-    if len(the_progression) == 1:
-        the_progression = the_progression[0]
-    named_chords = progressions.to_chords(the_progression, root_note.name)
+    named_chords = progressions.to_chords(re.split(r', ?', the_progression), root_note.name)
 
     def convert(next_chord, prev = {'note':root_note}):
         result = _ascending(prev['note'], next_chord)

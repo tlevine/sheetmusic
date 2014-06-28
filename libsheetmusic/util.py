@@ -87,3 +87,9 @@ def rendered_text(Gnumeric, top, left, bottom, right, workbook = 0, sheet = 1.0)
     rows = range(top, bottom + 1)
     print(columns, rows)
     return [[sheet.cell_fetch(column, row).get_rendered_text() for row in rows] for column in columns]
+
+def iterate(func):
+    'Decorate a function with this so I can pretend that I\'m using generators.'
+    def wrapper(*args, **kwargs):
+        return list(func(*args, **kwargs))
+    return wrapper

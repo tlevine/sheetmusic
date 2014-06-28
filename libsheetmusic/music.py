@@ -30,7 +30,7 @@ def progression(the_progression, root_note):
         prev['note'] = result[0]
         return result
 
-    return [convert(chord) for chord in named_chords]
+    return zip(*[convert(chord) for chord in named_chords])
 
 def nonkeyed_interval(func_name, note):
     other_note_name = getattr(intervals, func_name)(note.name)

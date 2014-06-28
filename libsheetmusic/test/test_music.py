@@ -33,8 +33,8 @@ def test_arpeggio():
     assert_notes_equal(observed[0], expected[0])
 
 def test_progression():
-    observed = music.progression([['I','IV','V']], c.Note('C-3'))
-    expected_str = [['C-3', 'E-3', 'G-3'], ['F-3', 'A-4', 'C-4'], ['G-3', 'B-4', 'D-4']]
+    observed = music.progression('I,IV, V', c.Note('C-3'))
+    expected_str = [['C-3', 'F-3', 'G-3'], ['E-3', 'A-4', 'B-4'], ['G-3', 'C-4', 'D-4']]
     expected = [[c.Note(j) for j in i] for i in expected_str]
     for i in range(len(expected)):
         assert_notes_equal(observed[i], expected[i])

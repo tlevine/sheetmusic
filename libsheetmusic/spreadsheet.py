@@ -1,3 +1,5 @@
+from itertools import repeat
+
 import libsheetmusic.music as m
 import libsheetmusic.util as u
 
@@ -35,8 +37,11 @@ def note_method(method_name, string_note):
     getattr(note, method_name)()
     return u.to_scientific(note)
 
-@u.iterate
+@u.repeat
 def rep(Gnumeric, range_ref, times):
     values = u.from_range_ref(Gnumeric, range_ref)
     for column in values:
-        yield column * int(times)
+        newcolumn = []
+        for cell in column:
+            newcolumn.extend([cell] * int(times))
+        yield newcolumn

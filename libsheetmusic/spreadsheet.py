@@ -13,7 +13,10 @@ def arpeggio(func_name, string_note, *args, **kwargs):
     return u.range_apply(u.to_scientific, m.arpeggio(func_name, u.from_scientific(string_note), *args, **kwargs))
 
 def progression(Gnumeric, progression_range_ref, string_root_note):
-    the_progression = u.from_range_ref(Gnumeric, progression_range_ref)
+    if 'RangeRef' in str(type(progression_range_ref)):
+        the_progression = u.from_range_ref(Gnumeric, progression_range_ref)
+    else:
+        the_progression = progression_range_ref
     root_note = u.from_scientific(string_root_note)
     return u.range_apply(u.to_scientific, m.progression(the_progression, root_note))
 
@@ -30,9 +33,7 @@ def note_method(method_name, string_note):
 
 def rep(Gnumeric, range_ref, times):
     values = u.from_range_ref(Gnumeric, range_ref)
-    print(values)
     out = []
     for column in values:
         out.append(column * int(times))
-    print(out)
     return out

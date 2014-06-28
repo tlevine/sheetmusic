@@ -27,6 +27,7 @@ def progression(Gnumeric, progression_range_ref, string_root_note):
     return u.range_apply(u.to_scientific, m.progression(the_progression, root_note))
 
 def keyed_interval(func_name, string_note, key):
+    key = str(key)[0]
     return u.to_scientific(m.keyed_interval(func_name, u.from_scientific(string_note), key))
 
 def nonkeyed_interval(func_name, string_note):

@@ -15,7 +15,7 @@ def chord(func_name, string_note, *args, **kwargs):
 def arpeggio(func_name, string_note, *args, **kwargs):
     return u.range_apply(u.to_scientific, m.arpeggio(func_name, u.from_scientific(string_note), *args, **kwargs))
 
-@u.iterate
+@u.repeat
 def progression(Gnumeric, progression_range_ref, string_root_note):
     if 'RangeRef' in str(type(progression_range_ref)):
         the_progression = u.from_range_ref(Gnumeric, progression_range_ref)

@@ -85,11 +85,28 @@ def rendered_text(Gnumeric, top, left, bottom, right, workbook = 0, sheet = 1.0)
     sheet = Gnumeric.workbooks()[workbook].sheets()[int(sheet) - 1]
     columns = range(left, right + 1)
     rows = range(top, bottom + 1)
-    print(columns, rows)
     return [[sheet.cell_fetch(column, row).get_rendered_text() for row in rows] for column in columns]
 
 def iterate(func):
     'Decorate a function with this so I can pretend that I\'m using generators.'
+    TIMES = 100
     def wrapper(*args, **kwargs):
-        return list(func(*args, **kwargs))
+        out = []
+        iterable = iter(func(*args, **kwargs))
+        for _ in range(TIMES):
+            try:
+                out.append(next(iterable))
+            except StopIteration:
+                break
+        return out
+    return wrapper
+
+def repeat(func):
+    TIMES = 30
+    def wrapper(*args, **kwargs):
+        result = list(func(*args, **kwargs))
+        out = []
+        for column in result:
+            out.append(column * TIMES)
+        return out
     return wrapper

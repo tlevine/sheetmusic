@@ -1,4 +1,5 @@
 import re
+from itertools import repeat
 
 import mingus.containers as containers
 import mingus.core.chords as chords

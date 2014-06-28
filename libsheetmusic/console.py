@@ -52,10 +52,10 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4):
     lp = LilyPond.from_Track(t)
     return LilyPond.to_png(lp, '/tmp/track')
 
-def midi(Gnumeric, fn, range_string):
+def midi(Gnumeric, fn, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Convert the cells to MIDI.'
     top, left, bottom, right = u.from_range_string(range_string)
-    MidiFileOut.write_Track(fn, to_track(u.rendered_text(Gnumeric, top, left, bottom, right)))
+    MidiFileOut.write_Track(fn, to_track(u.rendered_text(Gnumeric, top, left, bottom, right), key, upper, lower), bpm = bpm)
 
 def play(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Play the music in some cells.'

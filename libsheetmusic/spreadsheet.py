@@ -27,3 +27,12 @@ def note_method(method_name, string_note):
     note = u.from_scientific(string_note)
     getattr(note, method_name)()
     return u.to_scientific(note)
+
+def rep(Gnumeric, range_ref, times):
+    values = u.from_range_ref(Gnumeric, range_ref)
+    print(values)
+    out = []
+    for column in values:
+        out.append(column * int(times))
+    print(out)
+    return out

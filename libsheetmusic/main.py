@@ -79,14 +79,18 @@ def gnumeric_functions():
     try:
         import Gnumeric
     except ImportError:
-        def progression(*args, **kwargs):
+        def f(*args, **kwargs):
             raise EnvironmentError('This must be run from inside Gnumeric.')
+        rep = progression = f
     else:
         def progression(progression_range_ref, string_root_note):
             return s.progression(Gnumeric, progression_range_ref, string_root_note)
+        def rep(range_ref, times):
+            return s.rep(Gnumeric, range_ref, times)
 
     return {
         'progression': progression,
+        'rep': rep,
     }
 
 def util_functions():

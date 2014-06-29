@@ -70,7 +70,7 @@ def parse_range_ref(Gnumeric, range_ref):
     elif type(columns_list_or_float) == float:
         top = bottom = int(columns_list_or_float)
 
-    return left, top, right, bottom
+    return left - 1, top - 1, right - 1, bottom - 1
 
 def transpose(matrix):
     return zip(*matrix)

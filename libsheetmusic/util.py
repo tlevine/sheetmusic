@@ -68,7 +68,7 @@ def parse_range_ref(Gnumeric, range_ref):
         left = int(min(x[0] for x in columns_list_or_float))
         right = int(max(x[0] for x in columns_list_or_float))
     elif type(columns_list_or_float) == float:
-        top = bottom = int(columns_list_or_float)
+        left = right = int(columns_list_or_float)
 
     return left - 1, top - 1, right - 1, bottom - 1
 
@@ -93,7 +93,7 @@ def rendered_text(Gnumeric, x, y, workbook = 0, sheet = 1.0):
 
 def range_rendered_text(Gnumeric, left, top, right, bottom, workbook = 0, sheet = 1.0):
     columns = cell_positions(left, top, right, bottom)
-    return [[rendered_text(x,y) for x, y in column] for column in columns]
+    return [[rendered_text(Gnumeric, x,y) for x, y in column] for column in columns]
 
 def iterate(func):
     'Decorate a function with this so I can pretend that I\'m using generators.'

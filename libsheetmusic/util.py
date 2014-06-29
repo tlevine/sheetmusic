@@ -73,7 +73,7 @@ def from_range_ref(Gnumeric, range_ref):
 def transpose(matrix):
     return zip(*matrix)
 
-def from_range_string(range_string):
+def parse_range_string(range_string):
     def cell_string_to_pos(cell_string):
         column = string.ascii_uppercase.index(re.match('^([A-Z]).*', cell_string, flags = re.IGNORECASE).group(1).upper())
         row = int(re.match(r'^[A-Z]+([0-9]+)$', cell_string, flags = re.IGNORECASE).group(1))

@@ -9,6 +9,7 @@ Install lilypond, fluidsynth, gnumeric, maybe something else. Then ::
 
     pip2 install sheetmusic
     sheetmusic-installer
+    gnumeric
 
 Function reference
 ---------------------------
@@ -20,30 +21,9 @@ Sheetmusic ignores borders, but I recommend that you place
 horizontal borders where you would place bars in ordinary
 sheet music.
 
-Not (yet?) implemented
-================================
-
-Volume
---------
-Darker text produces louder notes.
-
-
 Slurred and tied notes
 ---------------------------
-???
-
-Glissando
----------------------------
-Create a glissando effect by setting the cells of interest to the
-same background color. Pitches are interpolated between any cells
-that contain notes, and empty cells in the region are ignored.
-
-Helpers
------------
-
-Anonymous functions ::
-
-    call(string_function, *args)
+Notes are slurred within italicized regions.
 
 Development
 ===============

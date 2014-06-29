@@ -81,6 +81,9 @@ def parse_range_string(range_string):
     (top, left), (bottom, right) = map(cell_string_to_pos, range_string.split(':'))
     return top, left - 1, bottom, right - 1
 
+def cell_positions(top, left, bottom, right):
+    return [[(x,y) for y in range(top, bottom + 1)] for x in range(left, right + 1)]
+
 def rendered_text(Gnumeric, top, left, bottom, right, workbook = 0, sheet = 1.0):
     sheet = Gnumeric.workbooks()[workbook].sheets()[int(sheet) - 1]
     columns = range(left, right + 1)

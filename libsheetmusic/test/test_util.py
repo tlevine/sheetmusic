@@ -61,3 +61,15 @@ def test_parse_range_string():
     ]
     for range_string, expectation in testcases:
         yield check_parse_range_string, range_string, expectation
+
+def check_cell_positions(top, left, bottom, right, expectation):
+    observation = util.cell_positions(top, left, bottom, right)
+    n.assert_list_equal(observation, expectation)
+
+def test_cell_positions():
+    testcases = [
+        (0,0,0,0, [[(0,0)]]),
+        (5,1,6,2, [[(5,1),(6,1)],[(5,2),(6,2)]]),
+    ]
+    for top, left, bottom, right, expectation in testcases:
+        yield check_cell_positions, top, left, bottom, right, expectation

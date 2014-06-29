@@ -20,7 +20,9 @@ def arpeggio(func_name, string_note, *args, **kwargs):
 @u.repeat
 def progression(Gnumeric, progression_range_ref, string_root_note):
     if 'RangeRef' in str(type(progression_range_ref)):
-        the_progression = u.from_range_ref(Gnumeric, progression_range_ref)
+        left, top, right, bottom = u.parse_range_ref(Gnumeric, progression_range_ref)
+        # the_progression = u.range_rendered_text(Gnumeric, progression_range_ref)
+        raise NotImplementedError
     else:
         the_progression = progression_range_ref
     root_note = u.from_scientific(string_root_note)
@@ -40,7 +42,9 @@ def note_method(method_name, string_note):
 
 @u.repeat
 def rep(Gnumeric, range_ref, times):
-    values = u.from_range_ref(Gnumeric, range_ref)
+    left, top, right, bottom = u.parse_range_ref(Gnumeric, range_ref)
+    values = u.range_rendered_text(Gnumeric, left, top, right, bottom,
+        sheet = Gnumeric.functions['sheet'](range_ref))
     for column in values:
         newcolumn = []
         for cell in column:

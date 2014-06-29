@@ -41,7 +41,10 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4):
     '''
     Convert the cells to sheet music.
     '''
-    t = to_track(u.from_range_ref(Gnumeric, range_ref), key, upper, lower)
+    left, top, right, bottom = u.parse_range_ref(Gnumeric, range_ref)
+    values = u.range_rendered_text(Gnumeric, left, top, right, bottom,
+        sheet = Gnumeric.functions['sheet'](range_ref))
+    t = to_track(values, key, upper, lower)
     lp = LilyPond.from_Track(t)
     return LilyPond.to_png(lp, '/tmp/track')
 

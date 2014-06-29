@@ -15,11 +15,11 @@ def test_from_scientific():
 def test_to_scientific():
     n.assert_equal(util.to_scientific(c.Note('A-4')), 'A4')
 
-def test_from_range_ref():
+def test_parse_range_ref():
     import libsheetmusic.test.MockGnumeric as MockGnumeric
-    observed = util.from_range_ref(MockGnumeric, MockGnumeric.RangeRef())
-    expected = [[MockGnumeric.Cell._cell_text]*4]*6
-    n.assert_list_equal(observed, expected)
+    observed = util.parse_range_ref(MockGnumeric, MockGnumeric.RangeRef())
+    expected = (0, 0, 3, 5)
+    n.assert_tuple_equal(observed, expected)
 
 def test_from_rendered_text():
     import libsheetmusic.test.MockGnumeric as MockGnumeric

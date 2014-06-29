@@ -50,7 +50,7 @@ def to_scientific(integral_note):
     note = containers.Note(int(integral_note))
     return note.name + str(note.octave)
 
-def from_range_ref(Gnumeric, range_ref):
+def parse_range_ref(Gnumeric, range_ref):
     workbook_index = 0 # Let's just hope that's always the case
     workbook = Gnumeric.workbooks()[workbook_index]
     sheet_index = int(Gnumeric.functions['sheet'](range_ref)) - 1
@@ -58,17 +58,19 @@ def from_range_ref(Gnumeric, range_ref):
     
     rows_list_or_float = Gnumeric.functions['row'](range_ref)
     if type(rows_list_or_float) == list:
-        rows = [int(x) for x in rows_list_or_float[0]]
+        top = int(min(rows_list_or_float[0]))
+        bottom = int(max(rows_list_or_float[0]))
     elif type(rows_list_or_float) == float:
-        rows = [int(rows_list_or_float)]
+        top = bottom = int(rows_list_or_float)
     
     columns_list_or_float = Gnumeric.functions['column'](range_ref)
     if type(columns_list_or_float) == list:
-        columns = [int(x[0]) for x in columns_list_or_float]
+        left = int(min(x[0] for x in columns_list_or_float))
+        right = int(max(x[0] for x in columns_list_or_float))
     elif type(columns_list_or_float) == float:
-        columns = [int(columns_list_or_float)]
+        top = bottom = int(columns_list_or_float)
 
-    return [[sheet.cell_fetch(int(column-1), int(row-1)).get_rendered_text() for row in rows] for column in columns]
+    return left, top, right, bottom
 
 def transpose(matrix):
     return zip(*matrix)

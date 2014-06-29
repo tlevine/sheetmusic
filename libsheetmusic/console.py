@@ -43,20 +43,20 @@ def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4):
     '''
     left, top, right, bottom = u.parse_range_ref(Gnumeric, range_ref)
     values = u.range_rendered_text(Gnumeric, left, top, right, bottom,
-        sheet = Gnumeric.functions['sheet'](range_ref))
+        sheet = 1) #Gnumeric.functions['sheet'](range_ref))
     t = to_track(values, key, upper, lower)
     lp = LilyPond.from_Track(t)
     return LilyPond.to_png(lp, '/tmp/track')
 
 def midi(Gnumeric, fn, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Convert the cells to MIDI.'
-    top, left, bottom, right = u.from_range_string(range_string)
+    top, left, bottom, right = u.parse_range_string(range_string)
     MidiFileOut.write_Track(fn, to_track(u.rendered_text(Gnumeric, top, left, bottom, right), key, upper, lower), bpm = bpm)
 
 def play(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Play the music in some cells.'
-    top, left, bottom, right = u.from_range_string(range_string)
-    range_values = u.rendered_text(Gnumeric, top, left, bottom, right)
+    top, left, bottom, right = u.parse_range_string(range_string)
+    range_values = u.range_rendered_text(Gnumeric, top, left, bottom, right)
     print(range_values)
     track = to_track(range_values, key, upper, lower)
     fluidsynth.play_Track(track, bpm = bpm)
@@ -72,7 +72,7 @@ def init():
 
 '''
 def bold(Gnumeric, range_string, workbook = 0, sheet = 0):
-    top, left, bottom, right = u.from_range_string(range_string)
+    top, left, bottom, right = u.parse_range_string(range_string)
     sheet = Gnumeric.workbooks()[workbook].sheets()[sheet]
     range = Gnumeric.Range(top, left, bottom, right)
     style = Gnumeric.GnmStyle()
@@ -81,12 +81,12 @@ def bold(Gnumeric, range_string, workbook = 0, sheet = 0):
 
 def show_track(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Play the music in some cells.'
-    top, left, bottom, right = u.from_range_string(range_string)
+    top, left, bottom, right = u.parse_range_string(range_string)
     track = to_track(u.rendered_text(Gnumeric, top, left, bottom, right), key, upper, lower)
     return track
 
 def show_rendered_text(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Play the music in some cells.'
-    top, left, bottom, right = u.from_range_string(range_string)
+    top, left, bottom, right = u.parse_range_string(range_string)
     return u.rendered_text(Gnumeric, top, left, bottom, right)
 '''

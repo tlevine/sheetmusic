@@ -44,7 +44,7 @@ def note_method(method_name, string_note):
 def rep(Gnumeric, range_ref, times):
     left, top, right, bottom = u.parse_range_ref(Gnumeric, range_ref)
     values = u.range_rendered_text(Gnumeric, left, top, right, bottom,
-        sheet = Gnumeric.functions['sheet'](range_ref))
+        sheet = 1) # Gnumeric.functions['sheet'](range_ref))
     for column in values:
         newcolumn = []
         for cell in column:

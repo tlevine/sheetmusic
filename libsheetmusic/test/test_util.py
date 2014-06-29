@@ -69,7 +69,7 @@ def check_cell_positions(left, top, right, bottom, expectation):
 def test_cell_positions():
     testcases = [
         (0,0,0,0, [[(0,0)]]),
-        (5,1,6,2, [[(5,1),(6,1)],[(5,2),(6,2)]]),
+        (5,1,6,2, [[(5,1),(5,2)],[(6,1),(6,2)]]),
     ]
     for left, top, right, bottom, expectation in testcases:
         yield check_cell_positions, left, top, right, bottom, expectation

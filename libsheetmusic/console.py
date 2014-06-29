@@ -25,17 +25,16 @@ def to_track(range_values, key, upper, lower):
     Convert the cells to sheet music.
     >>> to_track([['C3', 'C3'], ['E3', 'E3'], ['G3', 'G3'], ['C4', 'G4']], 'C', 2, 4)
     '''
-    def note_and_style(cell):
-        maybe_note, italic, bold = cell
-        note = u.maybe_from_scientific(maybe_note)
-        return note, italic, bold
-    cells = u.transpose(u.range_apply(note_and_style, range_values))
+    def note_and_italic(cell):
+        maybe_note, italic = cell
+        return u.maybe_from_scientific(maybe_note), italic
+    cells = u.transpose(u.range_apply(note_and_italic, range_values))
     meter = (int(upper), int(lower))
 
     ncs = []
     for row in cells:
         nc = c.NoteContainer()
-        for note, _, bold in row:
+        for note, _ in row:
             if note != None:
                 nc.add_note(note)
         allitalic = all(note_italic[1] for note_italic in row)

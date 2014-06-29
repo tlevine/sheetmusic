@@ -19,11 +19,15 @@ def test_from_range_ref():
     import libsheetmusic.test.MockGnumeric as MockGnumeric
     observed = util.from_range_ref(MockGnumeric, MockGnumeric.RangeRef())
     expected = [[MockGnumeric.Cell._cell_text]*4]*6
+    n.assert_list_equal(observed, expected)
 
 def test_from_rendered_text():
     import libsheetmusic.test.MockGnumeric as MockGnumeric
-    observed = util.rendered_text(MockGnumeric, 0, 0, 1, 1)
-    expected = [[MockGnumeric.Cell._cell_text]*2]*2
+    observed1 = util.rendered_text(MockGnumeric, 0, 0, workbook = 0, sheet = 1)
+    observed2 = util.rendered_text(MockGnumeric, 0, 0)
+    expected = MockGnumeric.Cell._cell_text
+    n.assert_equal(observed1, observed2)
+    n.assert_equal(observed1, expected)
 
 def test_range_apply():
     original = [[1,2],[3,4],[5,6]]

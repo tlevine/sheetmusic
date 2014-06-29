@@ -79,16 +79,14 @@ def parse_range_string(range_string):
         row = int(re.match(r'^[A-Z]+([0-9]+)$', cell_string, flags = re.IGNORECASE).group(1))
         return column, row
     (top, left), (bottom, right) = map(cell_string_to_pos, range_string.split(':'))
-    return top, left - 1, bottom, right - 1
+    return left - 1, top, right - 1, bottom
 
-def cell_positions(top, left, bottom, right):
+def cell_positions(left, top, right, bottom):
     return [[(x,y) for y in range(top, bottom + 1)] for x in range(left, right + 1)]
 
-def rendered_text(Gnumeric, top, left, bottom, right, workbook = 0, sheet = 1.0):
+def rendered_text(Gnumeric, x, y, workbook = 0, sheet = 1.0):
     sheet = Gnumeric.workbooks()[workbook].sheets()[int(sheet) - 1]
-    columns = range(left, right + 1)
-    rows = range(top, bottom + 1)
-    return [[sheet.cell_fetch(column, row).get_rendered_text() for row in rows] for column in columns]
+    return sheet.cell_fetch(x,y).get_rendered_text()
 
 def iterate(func):
     'Decorate a function with this so I can pretend that I\'m using generators.'

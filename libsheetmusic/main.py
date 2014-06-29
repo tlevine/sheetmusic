@@ -25,7 +25,15 @@ def interval_functions():
     nonkeyed_interval = 'lambda root: s.nonkeyed_interval("%s", root)'
     keyed_functions = {name + '_interval': eval(keyed_template % name) for name in keyed}
     nonkeyed_functions = {name + '_interval': eval(nonkeyed_interval % name) for name in not_keyed}
-    return u.merge(keyed_functions, nonkeyed_functions)
+    named = u.merge(keyed_functions, nonkeyed_functions)
+    fancy = {'interval': _interval}
+    return u.merge(named, fancy)
+
+def _interval(majorminor, number, root):
+    words = { 1: 'unison', 2: 'second', 3: 'third', 4: 'fourth',
+              5: 'fifth',  6: 'sixth',  7: 'seventh' }
+    if number in words:
+        return s.nonkeyed_interval('%s_%s' % (majorminor, words[number]), root)
 
 def scale_functions():
     scale_names = [

@@ -66,12 +66,16 @@ def midi(Gnumeric, fn, range_string, key = "C", upper = 4, lower = 4, bpm = 120)
     top, left, bottom, right = u.parse_range_string(range_string)
     MidiFileOut.write_Track(fn, to_track(u.rendered_text(Gnumeric, top, left, bottom, right), key, upper, lower), bpm = bpm)
 
-def play(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
+def play(Gnumeric, comma_separated_range_strings, key = "C", upper = 4, lower = 4, bpm = 120):
     'Play the music in some cells.'
-    top, left, bottom, right = u.parse_range_string(range_string)
-    stuff = u.range_rendered_text_and_italic(Gnumeric, top, left, bottom, right)
-    track = to_track(stuff, key, upper, lower)
-    fluidsynth.play_Track(track, bpm = bpm)
+    def track(range_string):
+        top, left, bottom, right = u.parse_range_string(range_string)
+        stuff = u.range_rendered_text_and_italic(Gnumeric, top, left, bottom, right)
+        return to_track(stuff, key, upper, lower)
+    composition = c.Composition()
+    for range_string in comma_separated_range_strings.split(','):
+        composition.add_track(track(range_string))
+    fluidsynth.play_Composition(composition, bpm = bpm)
 
 def loop(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Loop the music in some cells.'

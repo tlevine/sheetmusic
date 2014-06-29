@@ -46,8 +46,9 @@ def to_track(range_values, key, upper, lower):
         duration = 0.25
         while allitalic and len(ncs) > 0 and ncs[0][0] == nc:
             duration += 0.25
-            nc, allitalic = ncs.pop(0)
-        t.add_notes(nc, duration = duration)
+            _, allitalic = ncs.pop(0)
+        if not t.add_notes(nc, duration = int(1/duration)):
+            raise AssertionError('I failed to add a note container.')
     return t
 
 def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4):
@@ -66,16 +67,13 @@ def midi(Gnumeric, fn, range_string, key = "C", upper = 4, lower = 4, bpm = 120)
     top, left, bottom, right = u.parse_range_string(range_string)
     MidiFileOut.write_Track(fn, to_track(u.rendered_text(Gnumeric, top, left, bottom, right), key, upper, lower), bpm = bpm)
 
-def play(Gnumeric, comma_separated_range_strings, key = "C", upper = 4, lower = 4, bpm = 120):
+def play(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Play the music in some cells.'
     def track(range_string):
         top, left, bottom, right = u.parse_range_string(range_string)
         stuff = u.range_rendered_text_and_italic(Gnumeric, top, left, bottom, right)
         return to_track(stuff, key, upper, lower)
-    composition = c.Composition()
-    for range_string in comma_separated_range_strings.split(','):
-        composition.add_track(track(range_string))
-    fluidsynth.play_Composition(composition, bpm = bpm)
+    fluidsynth.play_Track(track(range_string), bpm = bpm)
 
 def loop(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Loop the music in some cells.'

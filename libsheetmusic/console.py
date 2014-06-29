@@ -25,16 +25,29 @@ def to_track(range_values, key, upper, lower):
     Convert the cells to sheet music.
     >>> to_track([['C3', 'C3'], ['E3', 'E3'], ['G3', 'G3'], ['C4', 'G4']], 'C', 2, 4)
     '''
-    cells = u.transpose(u.range_apply(u.maybe_from_scientific, range_values))
+    def note_and_italic(cell):
+        maybe_note, italic = cell
+        return u.maybe_from_scientific(maybe_note), italic
+    cells = u.transpose(u.range_apply(note_and_italic, range_values))
     meter = (int(upper), int(lower))
 
-    t = c.Track()
+    ncs = []
     for row in cells:
         nc = c.NoteContainer()
-        for note in row:
+        for note, _ in row:
             if note != None:
                 nc.add_note(note)
-        t.add_notes(nc)
+        allitalic = all(note_italic[1] for note_italic in row)
+        ncs.append((nc, allitalic))
+
+    t = c.Track()
+    while len(ncs) > 0:
+        nc, allitalic = ncs.pop(0)
+        duration = 0.25
+        while allitalic and len(ncs) > 0 and ncs[0][0] == nc:
+            duration += 0.25
+            nc, allitalic = ncs.pop(0)
+        t.add_notes(nc, duration = duration)
     return t
 
 def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4):
@@ -56,9 +69,8 @@ def midi(Gnumeric, fn, range_string, key = "C", upper = 4, lower = 4, bpm = 120)
 def play(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Play the music in some cells.'
     top, left, bottom, right = u.parse_range_string(range_string)
-    range_values = u.range_rendered_text(Gnumeric, top, left, bottom, right)
-    print(range_values)
-    track = to_track(range_values, key, upper, lower)
+    stuff = u.range_rendered_text_and_italic(Gnumeric, top, left, bottom, right)
+    track = to_track(stuff, key, upper, lower)
     fluidsynth.play_Track(track, bpm = bpm)
 
 def loop(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
@@ -71,14 +83,6 @@ def init():
     fluidsynth.play_Note(c.Note('A'))
 
 '''
-def bold(Gnumeric, range_string, workbook = 0, sheet = 0):
-    top, left, bottom, right = u.parse_range_string(range_string)
-    sheet = Gnumeric.workbooks()[workbook].sheets()[sheet]
-    range = Gnumeric.Range(top, left, bottom, right)
-    style = Gnumeric.GnmStyle()
-    style.set_font_bold(1)
-    sheet.style_apply_range(range, style)
-
 def show_track(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     'Play the music in some cells.'
     top, left, bottom, right = u.parse_range_string(range_string)

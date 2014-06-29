@@ -91,9 +91,18 @@ def rendered_text(Gnumeric, x, y, workbook = 0, sheet = 1.0):
     sheet = Gnumeric.workbooks()[workbook].sheets()[int(sheet) - 1]
     return sheet.cell_fetch(x,y).get_rendered_text()
 
+def italic(Gnumeric, x, y, workbook = 0, sheet = 1.0):
+    sheet = Gnumeric.workbooks()[workbook].sheets()[int(sheet) - 1]
+    result = sheet.cell_fetch(x,y).get_style().get_font_italic()
+    return {0:False,1:True}[result]
+
 def range_rendered_text(Gnumeric, left, top, right, bottom, workbook = 0, sheet = 1.0):
     columns = cell_positions(left, top, right, bottom)
     return [[rendered_text(Gnumeric, x,y) for x, y in column] for column in columns]
+
+def range_rendered_text_and_italic(Gnumeric, left, top, right, bottom, workbook = 0, sheet = 1.0):
+    columns = cell_positions(left, top, right, bottom)
+    return [[(rendered_text(Gnumeric, x,y), italic(Gnumeric, x, y)) for x, y in column] for column in columns]
 
 def iterate(func):
     'Decorate a function with this so I can pretend that I\'m using generators.'

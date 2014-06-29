@@ -70,16 +70,14 @@ def from_range_ref(Gnumeric, range_ref):
 
     return [[sheet.cell_fetch(int(column-1), int(row-1)).get_rendered_text() for row in rows] for column in columns]
 
-def transpose(matrix):
-    return zip(*matrix)
+def cell_string_to_pos(cell_string):
+    column = string.ascii_uppercase.index(re.match('^([A-Z]).*', cell_string, flags = re.IGNORECASE).group(1).upper())
+    row = int(re.match(r'^[A-Z]+([0-9]+)$', cell_string, flags = re.IGNORECASE).group(1)) - 1
+    return column, row
 
 def parse_range_string(range_string):
-    def cell_string_to_pos(cell_string):
-        column = string.ascii_uppercase.index(re.match('^([A-Z]).*', cell_string, flags = re.IGNORECASE).group(1).upper())
-        row = int(re.match(r'^[A-Z]+([0-9]+)$', cell_string, flags = re.IGNORECASE).group(1))
-        return column, row
     (top, left), (bottom, right) = map(cell_string_to_pos, range_string.split(':'))
-    return left - 1, top, right - 1, bottom
+    return left, top, right, bottom
 
 def cell_positions(left, top, right, bottom):
     return [[(x,y) for y in range(top, bottom + 1)] for x in range(left, right + 1)]

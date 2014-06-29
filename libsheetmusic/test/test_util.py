@@ -58,6 +58,7 @@ def test_parse_range_string():
         ('A1:A2', (0, 0, 0, 1)),
         ('B1:B2', (1, 0, 1, 1)),
         ('A1:E14', (0, 0, 4, 13)),
+        ('C1:E14', (2, 0, 4, 13)),
     ]
     for range_string, expectation in testcases:
         yield check_parse_range_string, range_string, expectation
@@ -73,3 +74,6 @@ def test_cell_positions():
     ]
     for left, top, right, bottom, expectation in testcases:
         yield check_cell_positions, left, top, right, bottom, expectation
+
+def test_cell_string_to_pos():
+    n.assert_tuple_equal(util.cell_string_to_pos('B28'), (1,27))

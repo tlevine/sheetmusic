@@ -29,19 +29,12 @@ def to_track(range_values, key, upper, lower):
     meter = (int(upper), int(lower))
 
     t = c.Track()
-    b = c.Bar(key = key, meter = meter)
     for row in cells:
         nc = c.NoteContainer()
         for note in row:
             if note != None:
                 nc.add_note(note)
-        b.place_notes(nc, lower)
-        if b.is_full():
-            t.add_bar(b)
-            b = c.Bar(key = key, meter = meter)
-    while b.current_beat != 0.0 and (not b.is_full()):
-        b.place_rest(lower)
-    t.add_bar(b)
+        t.add_notes(nc)
     return t
 
 def sheetmusic(Gnumeric, range_ref, key = "C", upper = 4, lower = 4):

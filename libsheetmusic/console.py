@@ -67,7 +67,7 @@ def midi(Gnumeric, fn, range_string, key = "C", upper = 4, lower = 4, bpm = 120)
     top, left, bottom, right = u.parse_range_string(range_string)
     MidiFileOut.write_Track(fn, to_track(u.rendered_text(Gnumeric, top, left, bottom, right), key, upper, lower), bpm = bpm)
 
-def play(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
+def play(Gnumeric, range_string, bpm = 120):
     'Play the music in some cells.'
     def track(range_string):
         top, left, bottom, right = u.parse_range_string(range_string)
@@ -80,8 +80,8 @@ def loop(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
     return Sub(functools.partial(play, Gnumeric, range_string, key, upper, lower, bpm))
 
 def init():
-    sf = '/usr/share/soundfonts/Unison.sf2'
-    fluidsynth.init(sf, 'alsa')
+    sf = '/usr/share/soundfonts/FluidR3_GM2-2.sf2'
+    fluidsynth.init(sf, 'jack')
     fluidsynth.play_Note(c.Note('A'))
 
 '''

@@ -72,7 +72,7 @@ def play(Gnumeric, range_string, bpm = 120):
     def track(range_string):
         top, left, bottom, right = u.parse_range_string(range_string)
         stuff = u.range_rendered_text_and_italic(Gnumeric, top, left, bottom, right)
-        return to_track(stuff, key, upper, lower)
+        return to_track(stuff, 'C', 4, 4)
     fluidsynth.play_Track(track(range_string), bpm = bpm)
 
 def loop(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
@@ -81,7 +81,7 @@ def loop(Gnumeric, range_string, key = "C", upper = 4, lower = 4, bpm = 120):
 
 def init():
     sf = '/usr/share/soundfonts/FluidR3_GM2-2.sf2'
-    fluidsynth.init(sf, 'jack')
+    fluidsynth.init(sf, 'alsa')
     fluidsynth.play_Note(c.Note('A'))
 
 '''

@@ -11,6 +11,18 @@ Install lilypond, fluidsynth, gnumeric, maybe something else. Then ::
     sheetmusic-installer
     gnumeric
 
+Open Gnumeric
+---------------
+To run spreadsheet functions with multiple output cells, hit control + enter rather than just enter.
+
+Open your python console
+---------------
+import sheetmusic
+sheetmusic.init()
+sheetmusic.play('B2:C2')
+--> to change tempo
+sheetmusic.play('J1:M33', 'A', 4, 4, 200)
+
 Function reference
 ---------------------------
 Sheetmusic provides the following functions inside the Spreadsheet.

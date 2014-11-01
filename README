@@ -11,17 +11,25 @@ Install lilypond, fluidsynth, gnumeric, maybe something else. Then ::
     sheetmusic-installer
     gnumeric
 
-Open Gnumeric
----------------
+Sheetmusic is a Gnumeric plugin. The first time you use it, you might
+need to enable the plugin; go to the "Tools" menu, click "Plug-ins...",
+and then make sure that "Sheetmusic" is checked.
+
+How to use
+-----------------
+Sheetmusic is a bunch of spreadsheet functions that manipulate notes.
+These notes must be written in scientific notation; for example, middle
+C is written as "C4".
+
+Some functions return more than one output cell (like chords).
 To run spreadsheet functions with multiple output cells, hit control + enter rather than just enter.
 
-Open your python console
----------------
-import sheetmusic
-sheetmusic.init()
-sheetmusic.play('B2:C2')
---> to change tempo
-sheetmusic.play('J1:M33', 'A', 4, 4, 200)
+To play the music, run ::
+
+    import sheetmusic
+    sheetmusic.init()
+    sheetmusic.play('B2:C2')
+    sheetmusic.play('J1:M33', 'A', 4, 4, 200) # to change tempo
 
 Function reference
 ---------------------------

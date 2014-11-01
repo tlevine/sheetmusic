@@ -9,6 +9,6 @@ setup(name='sheetmusic',
       scripts=['bin/sheetmusic-installer'],
       install_requires = ['mingus', 'lxml'],
       tests_require = ['nose'],
-      version='0.0.3',
+      version='0.0.4',
       license='AGPL',
 )
